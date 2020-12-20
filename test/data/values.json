@@ -1,0 +1,28 @@
+{
+  "login": {
+    "admin": {
+      "email": "admin@gmail.com",
+      "password": "111111"
+    },
+    "new": {
+      "email": "new@gmail.com",
+      "password": "111111"
+    },
+    "learner": {
+      "email": "learner@gmail.com",
+      "password": "111111"
+    },
+    "student": {
+      "email": "student@gmail.com",
+      "password": "111111"
+    },
+    "negativePassword": {
+      "email": "12345@12345.com",
+      "password": "12345"
+    },
+    "negativeEmail": {
+      "email": "1234",
+      "password": "123456"
+    }
+  }
+}

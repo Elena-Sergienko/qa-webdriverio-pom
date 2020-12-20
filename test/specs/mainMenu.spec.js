@@ -16,9 +16,10 @@ describe('Menu', () => {
         LoginPage.login("admin@gmail.com", "111111");
     })
 
-    it('Menu/courses', () => {
+    it.only('Menu/courses', () => {
         ProfilePage.menuCourses.click();
         expect(browser).toHaveUrl('https://stage.localcoding.us/course');
+        // CoursesPage.header1.
         expect(CoursesPage.header1.getText()).toEqual("Courses"); // Interactive Courses если запускать один it
     })
 

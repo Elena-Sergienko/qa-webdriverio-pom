@@ -11,15 +11,26 @@ import GoalsPage from "../pageobjects/goals.page";
 import AdminPage from "../pageobjects/admin.page";
 
 describe('Menu', () => {
-    beforeEach(() => {
+    before(() => {
         browser.maximizeWindow();
         LoginPage.login("admin@gmail.com", "111111");
     })
 
+    // beforeEach(() => {         // нужно ли перед каждым it обновлять или логин каждый раз или можно ничего из этого, просто переходить по вкладкам ?
+    //     browser.refresh();
+    // })
+
     it('Menu/courses', () => {
         ProfilePage.menuCourses.click();
+
+        CoursesPage.header1.waitUntil(function () {
+            return CoursesPage.header1.getText() === 'Courses'
+        }, {
+            timeout: 2000
+        });
+
         expect(browser).toHaveUrl('https://stage.localcoding.us/course');
-        expect(CoursesPage.header1.getText()).toEqual("Courses"); // Interactive Courses если запускать один it
+        expect(CoursesPage.header1.getText()).toEqual("Courses"); // Interactive Courses
     })
 
     it('Menu/cards', () => {
@@ -30,6 +41,13 @@ describe('Menu', () => {
 
     it('Menu/Diary', () => {
         ProfilePage.menuDiary.click();
+
+        DiaryPage.header1.waitUntil(function () {
+            return CoursesPage.header1.getText() === 'Daily reports'
+        }, {
+            timeout: 2000
+        });
+
         expect(browser).toHaveUrl('https://stage.localcoding.us/diary')
         expect(DiaryPage.header1.getText()).toEqual("Daily reports"); // ? "Day Report Landing page"
     })

@@ -61,6 +61,7 @@ describe('My Login application', () => {
         LoginPage.setUsername('example@example.com');
         LoginPage.setPassword('111111');
         LoginPage.clickSubmit();
+        LoginPage.notification.waitForExist();
         expect(LoginPage.notification).toHaveText('Auth failed');
     });
 

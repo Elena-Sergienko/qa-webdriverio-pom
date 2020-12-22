@@ -11,6 +11,7 @@ class Page {
 
     clearInput(element){
         element.keys(['Control', 'a']);
-        element.keys(['Backspace']);    }
+        element.keys(['Backspace']);
+    }
 }
 export default Page;

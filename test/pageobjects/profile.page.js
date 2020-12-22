@@ -42,6 +42,22 @@ class ProfilePage extends Page {
         return $("//div[@id='top-menu']/a[@class='ant-dropdown-trigger ant-dropdown-link']");
     }
 
+    get profileDropdown() {
+        return $("//span[@class='anticon anticon-down']");
+    }
+
+    get selectProfile() {
+        return $("//li[@data-qa='profile']");
+    }
+
+    get selectSettings() {
+        return $("//li[@data-qa='settings']");
+    }
+
+    get userName() {
+        return $("//h1");
+    }
+
 
 }
 

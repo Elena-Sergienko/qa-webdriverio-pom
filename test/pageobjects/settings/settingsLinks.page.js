@@ -1,78 +1,51 @@
 import Page from '../page';
-import LoginPage from '../login.page';
 
-class SettingsProfilePage extends Page {
+class SettingsLinksPage extends Page {
 
-    get inputFieldFirstName() {
-        return $("//input[@id='editProfile_firstName']");
+    get inputFieldGDResumeLink() {
+        return $("//input[@id='resume']");
     }
 
-    get inputFieldLastName() {
-        return $("//input[@id='editProfile_lastName']");
+    get inputFieldLinkedinLink() {
+        return $("//input[@id='linkedIn']");
     }
 
-    get inputFieldPhone() {
-        return $("//input[@id='editProfile_phone']");
+    get inputFieldFacebookLink() {
+        return $("//input[@id='facebook']");
     }
 
-    get inputFieldAbout() {
-        return $("//textarea[@id='editProfile_about']");
+    get inputFieldGitHubLink() {
+        return $("//input[@id='github']");
     }
 
-    get inputFieldMyGoals() {
-        return $("//textarea[@id='editProfile_goals']");
-    }
-
-    get inputFieldCountry() {
-        return $("//div[@data-qa='countries']");
-    }
-
-    // get selectCountry() {
-    //     return $("//div[@data-qa='countries']/span[@class='ant-select-arrow']");  //по селектору не кликает
-    // }
-
-    get countryRussia() {
-        return $("//div[@title='Russia']");
-    }
-
-    get inputFieldEnglishLevel() {
-        return $("//div[@data-qa='englishLevel']");
-    }
-
-    // get selectEnglishLevel() {
-    //     return $("//div[@data-qa='englishLevel']/span[@class='ant-select-arrow']");
-    // }                                                                                //по селектору не кликает
-
-    get englishAdvanced() {
-        return $("//div[@title='Advanced']");
-    }
-
-    get inputFieldTShirtSize(){
-        return $("//div[@data-qa='tShirtSize']");
-    }
-    // get selectTShirtSize() {
-    //     return $("//div[@data-qa='tShirtSize']/span[@class='ant-select-arrow']");  //по селектору не кликает
-    // }
-
-    get sizeWomenL() {                      // не выбирает из списка, т.к. находится в нижней его части
-        return $("//div[@title='Women - L']");
-    }
-
-    get sizeWomenXS() {
-        return $("//div[@title='Women - XS']");
+    get inputFieldCodewarsLink() {
+        return $("//input[@id='codewarsUsername']");
     }
 
     get saveBtn() {
-        return $("//button[@type='submit']");
+        return $("//button");
     }
 
-    edit(selectedIF, newName) {
-        selectedIF.addValue("")
-        selectedIF.keys(['Control', 'a']);
-        selectedIF.keys(['Backspace']);
-        selectedIF.addValue(newName)
+    get errorGoogle() {
+        return $("//div[@class='ant-form-item-explain ant-form-item-explain-error']/div[.='The link has to refer to https://docs.google.com/document/']");
+    }
+
+    get errorLinkedin() {
+        return $("//div[@class='ant-form-item-explain ant-form-item-explain-error']/div[.='The link has to refer to https://www.linkedin.com/in/']");
+    }
+
+    get errorFacebook() {
+        return $("//div[@class='ant-form-item-explain ant-form-item-explain-error']/div[.='The link has to refer to https://www.facebook.com/']");
+    }
+
+    get errorGitHub() {
+        return $("//div[@class='ant-form-item-explain ant-form-item-explain-error']/div[.='The link has to refer to https://github.com/']");
+    }
+
+    get errorCodewars() {
+        return $("//div[@class='ant-form-item-explain ant-form-item-explain-error']/div[.='The link has to refer to https://www.codewars.com/users/']");
     }
 
 }
 
-export default new SettingsProfilePage();
+export default new SettingsLinksPage();

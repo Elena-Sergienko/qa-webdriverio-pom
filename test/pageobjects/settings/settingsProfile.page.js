@@ -1,5 +1,4 @@
 import Page from '../page';
-import LoginPage from '../login.page';
 
 class SettingsProfilePage extends Page {
 
@@ -47,9 +46,10 @@ class SettingsProfilePage extends Page {
         return $("//div[@title='Advanced']");
     }
 
-    get inputFieldTShirtSize(){
+    get inputFieldTShirtSize() {
         return $("//div[@data-qa='tShirtSize']");
     }
+
     // get selectTShirtSize() {
     //     return $("//div[@data-qa='tShirtSize']/span[@class='ant-select-arrow']");  //по селектору не кликает
     // }
@@ -66,13 +66,25 @@ class SettingsProfilePage extends Page {
         return $("//button[@type='submit']");
     }
 
-    edit(selectedIF, newName) {
-        selectedIF.addValue("")
-        selectedIF.keys(['Control', 'a']);
-        selectedIF.keys(['Backspace']);
-        selectedIF.addValue(newName)
+    get linkPassword() {
+        return $("//li[@data-qa='password']");
     }
 
+    get linkEmail() {
+        return $("//li[@data-qa='email']");
+    }
+
+    get linkLinks() {
+        return $("//li[@data-qa='links']");
+    }
+
+    get linkShippingAddress() {
+        return $("//li[@data-qa='shippingAddress']");
+    }
+
+    get linkDeactivateAccount() {
+        return $("//li[@data-qa='deactivateAccount']");
+    }
 }
 
 export default new SettingsProfilePage();

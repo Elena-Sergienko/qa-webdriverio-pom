@@ -58,6 +58,28 @@ class ProfilePage extends Page {
         return $("//h1");
     }
 
+    get iconGDResume() {
+        return $("//a[@data-qa='resumeIcon']");
+    }
+
+    get iconFacebook() {
+        return $("//a[@data-qa='facebookIcon']");
+    }
+
+    get iconLinkedin() {
+        return $("//a[@data-qa='linkedInIcon']");
+    }
+
+    get iconGitHub() {
+        return $("//a[@data-qa='githubIcon']");
+    }
+
+     get iconCodewars() {
+        return $("//a[@data-qa='codewarsIcon']");
+    }
+
+
+
 
 }
 

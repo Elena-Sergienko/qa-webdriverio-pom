@@ -10,6 +10,7 @@ describe('Settings Profile', () => {
         LoginPage.login("admin@gmail.com", "111111");
 
         ProfilePage.profileDropdown.click();
+        ProfilePage.selectSettings.waitForDisplayed();
         ProfilePage.selectSettings.click();
     })
 

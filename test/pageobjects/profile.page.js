@@ -2,58 +2,6 @@ import Page from './page';
 
 class ProfilePage extends Page {
 
-    get topMenu() {
-        return $("//div[@id ='top-menu']")
-    }
-
-    get menuCourses() {
-        return $("//div[@data-qa='topmenu-Courses']");
-    }
-
-    get menuCards() {
-        return $("//div[@data-qa='topmenu-Cards']");
-    }
-
-    get menuDiary() {
-        return $("//div[@data-qa='topmenu-Diary']");
-    }
-
-    get menuGroups() {
-        return $("//div[@data-qa='topmenu-Groups']");
-    }
-
-    get menuChallenges() {
-        return $("//div[@data-qa='topmenu-Challenges']");
-    }
-
-    get menuShop() {
-        return $("//div[@data-qa='topmenu-Shop']");
-    }
-
-    get menuChat() {
-        return $("//div[@data-qa='topmenu-Chat']");
-    }
-
-    get menuGoal() {
-        return $("//div[@data-qa='topmenu-Goals']");
-    }
-
-    get menuAdmin() {
-        return $("//div[@id='top-menu']/a[@class='ant-dropdown-trigger ant-dropdown-link']");
-    }
-
-    get profileDropdown() {
-        return $("//span[@class='anticon anticon-down']");
-    }
-
-    get selectProfile() {
-        return $("//li[@data-qa='profile']");
-    }
-
-    get selectSettings() {
-        return $("//li[@data-qa='settings']");
-    }
-
     get userName() {
         return $("//h1");
     }
@@ -78,7 +26,23 @@ class ProfilePage extends Page {
         return $("//a[@data-qa='codewarsIcon']");
     }
 
+    get aboutSection() {
+        return $("//h3[.='About']/following-sibling::div");
+    }
 
+    get goalsSection() {
+        return $("//h3[.='Goals']/following-sibling::div")
+    }
+
+    firstName(){
+        let names = this.userName.getText().split(" ");
+        return names[0];
+    }
+
+    lastName(){
+        let names = this.userName.getText().split(" ");
+        return names[1];
+    }
 
 
 }

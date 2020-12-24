@@ -7,6 +7,28 @@ class Page {
      * Opens a sub page of the page
      * @param path path of the sub page (e.g. /path/to/page.html)
      */
+
+    get credentials () {
+        return [
+            {
+                username: "admin@gmail.com",
+                password: "111111"
+            },
+            {
+                username: "new@gmail.com",
+                password: "111111"
+            },
+            {
+                username: "learner@gmail.com",
+                password: "111111"
+            },
+            {
+                username: "student@gmail.com",
+                password: "111111"
+            }
+        ];
+    }
+
     get notification() {
         return $('.ant-notification-notice-message')
     };

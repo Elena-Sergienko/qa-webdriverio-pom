@@ -8,7 +8,7 @@ import ChallengesPage from "../pageobjects/challenges.page";
 import ShopPage from "../pageobjects/shop.page";
 import ChatPage from "../pageobjects/chat.page";
 import GoalsPage from "../pageobjects/goals.page";
-import AdminPage from "../pageobjects/admin.page";
+import MenuPage from "../pageobjects/menu.page";
 
 describe('Menu', () => {
     before(() => {
@@ -21,7 +21,7 @@ describe('Menu', () => {
     // })
 
     it('Menu/courses', () => {
-        ProfilePage.menuCourses.click();
+        MenuPage.menuCourses.click();
 
         CoursesPage.header1.waitUntil(function () {
             return CoursesPage.header1.getText() === 'Courses'
@@ -34,13 +34,13 @@ describe('Menu', () => {
     })
 
     it('Menu/cards', () => {
-        ProfilePage.menuCards.click();
+        MenuPage.menuCards.click();
         expect(browser).toHaveUrl('https://stage.localcoding.us/flash');
         expect(CardsPage.header1.getText()).toEqual("Interview practice cards");
     })
 
     it('Menu/Diary', () => {
-        ProfilePage.menuDiary.click();
+        MenuPage.menuDiary.click();
 
         DiaryPage.header1.waitUntil(function () {
             return CoursesPage.header1.getText() === 'Daily reports'
@@ -53,38 +53,38 @@ describe('Menu', () => {
     })
 
     it('Menu/Groups', () => {
-        ProfilePage.menuGroups.click();
+        MenuPage.menuGroups.click();
         expect(browser).toHaveUrl('https://stage.localcoding.us/group');
         expect(GroupPage.header1.getText()).toEqual("Groups");
     })
 
     it('Menu/Challenges', () => {
-        ProfilePage.menuChallenges.click();
+        MenuPage.menuChallenges.click();
         expect(browser).toHaveUrl('https://stage.localcoding.us/challenge');
         expect(ChallengesPage.header1.getText()).toEqual("Challenges");
     })
 
     it('Menu/Shop', () => {
-        ProfilePage.menuShop.click();
+        MenuPage.menuShop.click();
         expect(browser).toHaveUrl('https://stage.localcoding.us/shop');
         expect(ShopPage.header1.getText()).toEqual("Products");
     })
 
     it('Menu/Chat', () => {
-        ProfilePage.menuChat.click();
+        MenuPage.menuChat.click();
         expect(browser).toHaveUrl('https://stage.localcoding.us/chat');
         expect(ChatPage.chatMenu.isDisplayed()).toEqual(true);
     })
 
     it('Menu/Goals', () => {
-        ProfilePage.menuGoal.click();
+        MenuPage.menuGoal.click();
         expect(browser).toHaveUrl('https://stage.localcoding.us/goal');
         expect(GoalsPage.header1.getText()).toEqual("Goals");
     })
 
     it('Menu/Admin', () => {
-        ProfilePage.menuAdmin.click();
-        AdminPage.dropdownMenu.waitForDisplayed();
-        expect(AdminPage.dropdownMenu.isDisplayed()).toEqual(true);
+        MenuPage.menuAdmin.click();
+        MenuPage.adminDropdownMenu.waitForDisplayed();
+        expect(MenuPage.adminDropdownMenu.isDisplayed()).toEqual(true);
     })
 })

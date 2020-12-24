@@ -8,7 +8,7 @@ import MenuPage from "../pageobjects/menu.page"
 describe('Settings Links', () => {
     before(() => {
         browser.maximizeWindow();
-        LoginPage.login("admin@gmail.com", "111111");
+        LoginPage.login(SettingsProfilePage.credentials[0].username, SettingsProfilePage.credentials[0].password);
     })
     // beforeEach(() => {         // нужно ли перед каждым it обновлять или логин каждый раз или можно ничего из этого, просто переходить по вкладкам ?
     //     browser.refresh();
@@ -58,8 +58,8 @@ describe('Settings Links', () => {
             SettingsLinksPage.edit(SettingsLinksPage.inputFieldGDResumeLink, inpGDResumeLink);
             SettingsLinksPage.saveBtn.click();
 
-            ProfilePage.profileDropdown.click();
-            ProfilePage.selectProfile.click();
+            MenuPage.profileDropdown.click();
+            MenuPage.selectProfile.click();
             let checkLink = ProfilePage.iconGDResume.getAttribute("href");
 
             expect(checkLink).toEqual(expGSResumeLink);   // как здесь проверить еще и на открывающейся сторонней странице (googleDoc, gitHub, codewars...)
@@ -89,8 +89,7 @@ describe('Settings Links', () => {
             SettingsLinksPage.edit(SettingsLinksPage.inputFieldLinkedinLink, inpLinkedinLink);
             SettingsLinksPage.saveBtn.click();
 
-            ProfilePage.profileDropdown.click();
-            ProfilePage.selectProfile.click();
+            MenuPage.goToProfile();
             let checkLink = ProfilePage.iconLinkedin.getAttribute("href");
 
             expect(checkLink).toEqual(expLinkedinLink);   // как здесь проверить еще и на открывающейся сторонней странице (googleDoc, gitHub, codewars...)
@@ -120,8 +119,7 @@ describe('Settings Links', () => {
             SettingsLinksPage.edit(SettingsLinksPage.inputFieldFacebookLink, inpFacebookLink);
             SettingsLinksPage.saveBtn.click();
 
-            ProfilePage.profileDropdown.click();
-            ProfilePage.selectProfile.click();
+            MenuPage.goToProfile();
             let checkLink = ProfilePage.iconFacebook.getAttribute("href");
 
             expect(checkLink).toEqual(expFacebookLink);   // как здесь проверить еще и на открывающейся сторонней странице (googleDoc, gitHub, codewars...)
@@ -151,8 +149,7 @@ describe('Settings Links', () => {
             SettingsLinksPage.edit(SettingsLinksPage.inputFieldGitHubLink, inpGitHubLink);
             SettingsLinksPage.saveBtn.click();
 
-            ProfilePage.profileDropdown.click();
-            ProfilePage.selectProfile.click();
+            MenuPage.goToProfile();
             let checkLink = ProfilePage.iconGitHub.getAttribute("href");
 
             expect(checkLink).toEqual(expGitHubLink);   // как здесь проверить еще и на открывающейся сторонней странице (googleDoc, gitHub, codewars...)
@@ -182,8 +179,7 @@ describe('Settings Links', () => {
             SettingsLinksPage.edit(SettingsLinksPage.inputFieldCodewarsLink, inpCodewarsLink);
             SettingsLinksPage.saveBtn.click();
 
-            ProfilePage.profileDropdown.click();
-            ProfilePage.selectProfile.click();
+            MenuPage.goToProfile();
             let checkLink = ProfilePage.iconCodewars.getAttribute("href");
 
             expect(checkLink).toEqual(expCodewarsLink);   // как здесь проверить еще и на открывающейся сторонней странице (googleDoc, gitHub, codewars...)

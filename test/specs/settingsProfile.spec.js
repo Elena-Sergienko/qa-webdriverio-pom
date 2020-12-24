@@ -1,19 +1,18 @@
 import LoginPage from "../pageobjects/login.page";
 import ProfilePage from "../pageobjects/profile.page";
-import CoursesPage from "../pageobjects/courses.page";
 import SettingsProfilePage from "../pageobjects/settings/settingsProfile.page"
+import MenuPage from "../pageobjects/menu.page";
+import AdminUsersPage from "../pageobjects/adminUsers.page";
 
 
 describe('Settings Profile', () => {
     before(() => {
         browser.maximizeWindow();
-        LoginPage.login("admin@gmail.com", "111111");
-
-        ProfilePage.profileDropdown.click();
-        ProfilePage.selectSettings.waitForDisplayed();
-        ProfilePage.selectSettings.click();
+        LoginPage.login(SettingsProfilePage.credentials[0].username, SettingsProfilePage.credentials[0].password);
     })
-
+    beforeEach(() => {
+        MenuPage.goToSettingsProfile();
+    })
     // beforeEach(() => {         // нужно ли перед каждым it обновлять или логин каждый раз или можно ничего из этого, просто переходить по вкладкам ?
     //     browser.refresh();
     // })
@@ -24,42 +23,90 @@ describe('Settings Profile', () => {
     const inpLastName = "Ivanova";
     const expLastName = "Ivanova";
 
+    const inpPhone = "22222222222";
+    const expPhone = "22222222222";
+
+    const inpAbout = "Improving skills";
+    const expAbout = "Improving skills";
+
+    const inpGoal = "QA engineer";
+    const expGoal = "QA engineer";
+
+    const expCountry = "Russia";
+
 
     it('Edit First Name', () => {
         SettingsProfilePage.edit(SettingsProfilePage.inputFieldFirstName, inpFirstName);
-        let checkNewName = SettingsProfilePage.inputFieldFirstName.getValue();
-        expect(checkNewName).toEqual(expFirstName)
+        SettingsProfilePage.saveBtn.click();
+
+        MenuPage.goToProfile();
+        expect(ProfilePage.firstName()).toEqual(expFirstName);
     })
 
     it('Edit Last Name', () => {
         SettingsProfilePage.edit(SettingsProfilePage.inputFieldLastName, inpLastName);
-        let checkNewName = SettingsProfilePage.inputFieldLastName.getValue();
-        expect(checkNewName).toEqual(expLastName)
+        SettingsProfilePage.saveBtn.click();
+
+        MenuPage.goToProfile();
+        expect(ProfilePage.lastName()).toEqual(expLastName);
     })
 
     it('Edit Phone', () => {
-        SettingsProfilePage.edit(SettingsProfilePage.inputFieldPhone, "22222222222");
-        let checkNewPhone = SettingsProfilePage.inputFieldPhone.getValue();
-        expect(checkNewPhone).toEqual("22222222222")
+        SettingsProfilePage.edit(SettingsProfilePage.inputFieldPhone, inpPhone);
+        SettingsProfilePage.saveBtn.click();
+
+        MenuPage.goToAdminUsers();
+        AdminUsersPage.inputFieldEmail.setValue(SettingsProfilePage.credentials[0].username);
+        browser.pause(4000) // как можно поставить паузу иначе в данном случае? waitUntil (что?)
+        expect(AdminUsersPage.phone.getText()).toEqual(expPhone);
+
     })
 
     it('Edit About', () => {
-        SettingsProfilePage.edit(SettingsProfilePage.inputFieldAbout, "Improving  skills");
-        let checkNewAbout = SettingsProfilePage.inputFieldAbout.getValue();
-        expect(checkNewAbout).toEqual("Improving  skills")
+        SettingsProfilePage.edit(SettingsProfilePage.inputFieldAbout, inpAbout);
+        SettingsProfilePage.saveBtn.click();
+
+        MenuPage.goToAdminUsers();
+        AdminUsersPage.inputFieldEmail.setValue(SettingsProfilePage.credentials[0].username);
+        browser.pause(4000) // как можно поставить паузу иначе в данном случае? waitUntil (что?)
+
+        expect(AdminUsersPage.about.getText()).toEqual(expAbout);
+
+        MenuPage.goToProfile();
+        expect(ProfilePage.aboutSection.getText()).toEqual(expAbout);
     })
 
     it('Edit My goals', () => {
-        SettingsProfilePage.edit(SettingsProfilePage.inputFieldMyGoals, "QA engineer");
-        let checkNewGoals = SettingsProfilePage.inputFieldMyGoals.getValue();
-        expect(checkNewGoals).toEqual("QA engineer");
+        SettingsProfilePage.edit(SettingsProfilePage.inputFieldMyGoals, inpGoal);
+        SettingsProfilePage.saveBtn.click();
+
+        MenuPage.goToAdminUsers();
+        AdminUsersPage.inputFieldEmail.setValue(SettingsProfilePage.credentials[0].username);
+        browser.pause(4000) // как можно поставить паузу иначе в данном случае? waitUntil (что?)
+
+        expect(AdminUsersPage.goal.getText()).toEqual(expGoal);
+
+        MenuPage.goToProfile();
+        expect(ProfilePage.goalsSection.getText()).toEqual(expGoal);
     })
 
-    it('Edit Country', () => {
+    xit('Edit Country', () => {
         SettingsProfilePage.inputFieldCountry.click();
+        // SettingsProfilePage.countryAzerbaijan.scrollIntoView(); // scroll не работает в данной ситуации
+        // SettingsProfilePage.countryAzerbaijan.click();
+
         SettingsProfilePage.countryRussia.click();
-        let newCountry = SettingsProfilePage.inputFieldCountry.getText();
-        expect(newCountry).toEqual("Russia");
+
+        SettingsProfilePage.saveBtn.click();
+
+        MenuPage.goToAdminUsers();
+        AdminUsersPage.inputFieldEmail.setValue(SettingsProfilePage.credentials[0].username);
+        browser.pause(4000) //
+        //
+        // // AdminUsersPage.country.scroll();   // scroll не работает или как найти правильный селектор чтобы подтвердить выбранную страну
+
+        browser.pause(5000)
+        expect(AdminUsersPage.country.getText()).toEqual(expCountry);
     })
 
     it('Edit English level', () => {
@@ -86,8 +133,8 @@ describe('Settings Profile', () => {
     it('Save btn', () => {
         SettingsProfilePage.saveBtn.waitForDisplayed();
         SettingsProfilePage.saveBtn.click();
-        ProfilePage.profileDropdown.click();
-        ProfilePage.selectProfile.click();
+        MenuPage.profileDropdown.click();
+        MenuPage.selectProfile.click();
         let checkName = ProfilePage.userName.getText();
         expect(checkName).toEqual(expFirstName + ' ' + expLastName);
     })

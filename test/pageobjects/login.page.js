@@ -1,5 +1,5 @@
 import Page from './page';
-import ProfilePage from "./profile.page";
+import MenuPage from "./menu.page";
 
 /**
  * sub page containing specific selectors and methods for a specific page
@@ -63,7 +63,7 @@ class LoginPage extends Page {
         this.setUsername(username);
         this.setPassword(password);
         this.clickSubmit();
-        ProfilePage.topMenu.waitForExist(); //?? нормально ли подтягивать сюда с другой page
+        MenuPage.topMenu.waitForExist(); //?? нормально ли подтягивать сюда с другой page
 
     }
 

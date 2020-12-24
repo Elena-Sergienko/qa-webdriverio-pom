@@ -34,6 +34,10 @@ class SettingsProfilePage extends Page {
         return $("//div[@title='Russia']");
     }
 
+    get countryAzerbaijan() {
+        return $("//div[@title='Azerbaijan']");
+    }
+
     get inputFieldEnglishLevel() {
         return $("//div[@data-qa='englishLevel']");
     }

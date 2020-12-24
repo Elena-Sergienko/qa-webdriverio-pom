@@ -65,6 +65,10 @@ class MenuPage extends Page {
         return $("//a[.='Users']");
     }
 
+    get logout() {
+        return $("//li[@data-qa='logout']");
+    }
+
     goToProfile(){
         this.profileDropdown.click();
         this.selectProfile.waitForDisplayed();
@@ -89,6 +93,11 @@ class MenuPage extends Page {
         this.selectAdminUsers.waitForDisplayed();
         this.selectAdminUsers.click();
         AdminUsersPage.inputFieldName.waitForDisplayed();
+    }
+
+    goToLogout() {
+        this.profileDropdown.click();
+        this.logout.click();
     }
 
 }

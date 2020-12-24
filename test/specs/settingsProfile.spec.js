@@ -17,22 +17,24 @@ describe('Settings Profile', () => {
     //     browser.refresh();
     // })
 
-    const inpFirstName = "Anna";
-    const expFirstName = "Anna";
+    const inpFirstName = "Elena";
+    const expFirstName = "Elena";
 
-    const inpLastName = "Ivanova";
-    const expLastName = "Ivanova";
+    const inpLastName = "A";
+    const expLastName = "A";
 
-    const inpPhone = "22222222222";
-    const expPhone = "22222222222";
+    const inpPhone = "11111111111";
+    const expPhone = "11111111111";
 
-    const inpAbout = "Improving skills";
-    const expAbout = "Improving skills";
+    const inpAbout = "About me";
+    const expAbout = "About me";
 
-    const inpGoal = "QA engineer";
-    const expGoal = "QA engineer";
+    const inpGoal = "My goal - QA engineer";
+    const expGoal = "My goal - QA engineer";
 
     const expCountry = "Russia";
+    const expEnglish = "Advanced";
+    const expSize = "Women - XS";
 
 
     it('Edit First Name', () => {
@@ -111,23 +113,28 @@ describe('Settings Profile', () => {
 
     it('Edit English level', () => {
         SettingsProfilePage.inputFieldEnglishLevel.click();
-        SettingsProfilePage.englishAdvanced.click();
-        let newEnglishLevel = SettingsProfilePage.inputFieldEnglishLevel.getText();
-        expect(newEnglishLevel).toEqual("Advanced");
-    })
+        SettingsProfilePage.englishAdvanced.click();                // как проверить этот тест? где отображается уровень английского
+        SettingsProfilePage.saveBtn.click();
 
-    it('Edit English level', () => {
-        SettingsProfilePage.inputFieldEnglishLevel.click();
-        SettingsProfilePage.englishAdvanced.click();
+        MenuPage.goToLogout();
+        LoginPage.login(SettingsProfilePage.credentials[0].username, SettingsProfilePage.credentials[0].password);
+        MenuPage.goToSettingsProfile();
+
         let newEnglishLevel = SettingsProfilePage.inputFieldEnglishLevel.getText();
-        expect(newEnglishLevel).toEqual("Advanced");
+        expect(newEnglishLevel).toEqual(expEnglish);
     })
 
     it('Edit T-Shirt size', () => {
         SettingsProfilePage.inputFieldTShirtSize.click();
         SettingsProfilePage.sizeWomenXS.click();
+        SettingsProfilePage.saveBtn.click();
+
+        MenuPage.goToLogout();
+        LoginPage.login(SettingsProfilePage.credentials[0].username, SettingsProfilePage.credentials[0].password);
+        MenuPage.goToSettingsProfile();
+
         let newSize = SettingsProfilePage.inputFieldTShirtSize.getText();
-        expect(newSize).toEqual("Women - XS");
+        expect(newSize).toEqual(expSize);
     })
 
     it('Save btn', () => {

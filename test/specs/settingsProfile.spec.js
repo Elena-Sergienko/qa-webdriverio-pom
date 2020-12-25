@@ -3,6 +3,7 @@ import ProfilePage from "../pageobjects/profile.page";
 import SettingsProfilePage from "../pageobjects/settings/settingsProfile.page"
 import MenuPage from "../pageobjects/menu.page";
 import AdminUsersPage from "../pageobjects/adminUsers.page";
+import MainMenu from "../pageobjects/menu.page";
 
 
 describe('Settings Profile', () => {
@@ -16,6 +17,10 @@ describe('Settings Profile', () => {
     // beforeEach(() => {         // нужно ли перед каждым it обновлять или логин каждый раз или можно ничего из этого, просто переходить по вкладкам ?
     //     browser.refresh();
     // })
+
+    after(() => {
+        MainMenu.goToLogout();
+    })
 
     const inpFirstName = "Elena";
     const expFirstName = "Elena";

@@ -9,6 +9,7 @@ import ShopPage from "../pageobjects/shop.page";
 import ChatPage from "../pageobjects/chat.page";
 import GoalsPage from "../pageobjects/goals.page";
 import MenuPage from "../pageobjects/menu.page";
+import MainMenu from "../pageobjects/menu.page";
 
 describe('Menu', () => {
     before(() => {
@@ -19,6 +20,10 @@ describe('Menu', () => {
     // beforeEach(() => {         // нужно ли перед каждым it обновлять или логин каждый раз или можно ничего из этого, просто переходить по вкладкам ?
     //     browser.refresh();
     // })
+
+    after(() => {
+        MainMenu.goToLogout();
+    })
 
     it('Menu/courses', () => {
         MenuPage.menuCourses.click();
@@ -87,4 +92,5 @@ describe('Menu', () => {
         MenuPage.adminDropdownMenu.waitForDisplayed();
         expect(MenuPage.adminDropdownMenu.isDisplayed()).toEqual(true);
     })
+
 })

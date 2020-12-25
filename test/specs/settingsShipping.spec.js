@@ -1,12 +1,11 @@
 import LoginPage from "../pageobjects/login.page";
-import ProfilePage from "../pageobjects/profile.page";
 import SettingsProfilePage from "../pageobjects/settings/settingsProfile.page"
 import SettingsShippingPage from "../pageobjects/settings/settingsShipping.page"
 import MenuPage from "../pageobjects/menu.page";
-import AdminUsersPage from "../pageobjects/adminUsers.page";
+import MainMenu from "../pageobjects/menu.page";
 
 
-describe('Settings Profile', () => {
+describe('Settings Shipping address', () => {
     before(() => {
         browser.maximizeWindow();
         LoginPage.login(SettingsProfilePage.credentials[0].username, SettingsProfilePage.credentials[0].password);
@@ -17,6 +16,10 @@ describe('Settings Profile', () => {
     // beforeEach(() => {         // нужно ли перед каждым it обновлять или логин каждый раз или можно ничего из этого, просто переходить по вкладкам ?
     //     browser.refresh();
     // })
+
+    after(() => {
+        MainMenu.goToLogout();
+    })
 
     const inpFullName = "Anna Ivanova";
     const expFullName = "Anna Ivanova";

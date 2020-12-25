@@ -1,7 +1,7 @@
 import Page from './page';
 import ProfilePage from "./profile.page";
 import SettingsProfilePage from "./settings/settingsProfile.page";
-import AdminUsersPage from "./adminUsers.page";
+import AdminUsersPage from "./admin/adminUsers.page";
 
 class MenuPage extends Page {
 

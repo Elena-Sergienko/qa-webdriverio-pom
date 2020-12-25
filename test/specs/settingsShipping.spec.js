@@ -30,9 +30,6 @@ describe('Settings Shipping address', () => {
     const inpCity = "Redmond";
     const expCity = "Redmond";
 
-    const inpState = "CA";
-    const expState = "CA";
-
     const inpPostalCode = "981067";
     const expPostalCode = "981067";
 

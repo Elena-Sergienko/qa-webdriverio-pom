@@ -88,6 +88,13 @@ class MenuPage extends Page {
         SettingsProfilePage.linkLinks.click();
     }
 
+    goToSettingsShipping(){
+        this.profileDropdown.click();
+        this.selectSettings.waitForDisplayed();
+        this.selectSettings.click();
+        SettingsProfilePage.linkShippingAddress.click();
+    }
+
     goToAdminUsers(){
         this.adminDropdownMenu.click();
         this.selectAdminUsers.waitForDisplayed();

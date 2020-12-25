@@ -3,6 +3,7 @@ import ProfilePage from "../pageobjects/profile.page";
 import SettingsProfilePage from "../pageobjects/settings/settingsProfile.page"
 import SettingsLinksPage from "../pageobjects/settings/settingsLinks.page"
 import MenuPage from "../pageobjects/menu.page"
+import MainMenu from "../pageobjects/menu.page";
 
 
 describe('Settings Links', () => {
@@ -13,6 +14,10 @@ describe('Settings Links', () => {
     // beforeEach(() => {         // нужно ли перед каждым it обновлять или логин каждый раз или можно ничего из этого, просто переходить по вкладкам ?
     //     browser.refresh();
     // })
+
+    after(() => {
+        MainMenu.goToLogout();
+    })
 
     const inpGDResumeLink = "https://docs.google.com/document/d/1U1O7hDDLujUfNmcvs_a5vd23G7xIHR2mKVUPDXaoQhw/edit?usp=sharing";
     const expErrorGoogle = "The link has to refer to https://docs.google.com/document/";

@@ -1,12 +1,11 @@
 import LoginPage from "../pageobjects/login.page";
-import ProfilePage from "../pageobjects/profile.page";
 import SettingsProfilePage from "../pageobjects/settings/settingsProfile.page"
 import SettingsShippingPage from "../pageobjects/settings/settingsShipping.page"
 import MenuPage from "../pageobjects/menu.page";
-import AdminUsersPage from "../pageobjects/adminUsers.page";
+import MainMenu from "../pageobjects/menu.page";
 
 
-describe('Settings Profile', () => {
+describe('Settings Shipping address', () => {
     before(() => {
         browser.maximizeWindow();
         LoginPage.login(SettingsProfilePage.credentials[0].username, SettingsProfilePage.credentials[0].password);
@@ -17,6 +16,10 @@ describe('Settings Profile', () => {
     // beforeEach(() => {         // нужно ли перед каждым it обновлять или логин каждый раз или можно ничего из этого, просто переходить по вкладкам ?
     //     browser.refresh();
     // })
+
+    after(() => {
+        MainMenu.goToLogout();
+    })
 
     const inpFullName = "Anna Ivanova";
     const expFullName = "Anna Ivanova";
@@ -33,10 +36,10 @@ describe('Settings Profile', () => {
     const inpPostalCode = "981067";
     const expPostalCode = "981067";
 
-    const inpContactPhone = "2223333333";
-    const expContactPhone = "2223333333";
+    const inpContactPhone = "12345678";
+    const expContactPhone = "12345678";
 
-    const expErrorMessage = "Phone number must be min: 10 and max: 11 numbers.";
+    const expErrorMessage = "Phone number must be min: 8 and max: 9 numbers.";
 
 
     it('Input and Save Full Name', () => {
@@ -84,4 +87,45 @@ describe('Settings Profile', () => {
         expect(SettingsShippingPage.inputFieldCity.getValue()).toEqual(expCity);
     })
 
+    xit('Select and save State/Province', () => {
+        SettingsShippingPage.dropDownState.click(); // не получается выбрать селектор правильно
+        browser.pause(3000)
+        SettingsShippingPage.selectMinsk.click();
+        browser.pause(3000)
+        SettingsShippingPage.saveAddressBtn.click();
+
+        MenuPage.goToLogout();
+        LoginPage.login(SettingsProfilePage.credentials[0].username, SettingsProfilePage.credentials[0].password);
+        MenuPage.goToSettingsShipping();
+
+        expect(SettingsShippingPage.dropDownState.getText()).toEqual("Minsk");
+    })
+
+    it('Input and Save Postal Code', () => {
+        SettingsShippingPage.edit(SettingsShippingPage.inputFieldPostalCode, inpPostalCode);
+        SettingsShippingPage.saveAddressBtn.click();
+
+        MenuPage.goToLogout();
+        LoginPage.login(SettingsProfilePage.credentials[0].username, SettingsProfilePage.credentials[0].password);
+        MenuPage.goToSettingsShipping();
+
+        expect(SettingsShippingPage.inputFieldPostalCode.getValue()).toEqual(expPostalCode);
+    })
+
+    it('Input and Save Contact Phone', () => {
+        SettingsShippingPage.edit(SettingsShippingPage.inputFieldContactPhone, inpContactPhone);
+        SettingsShippingPage.saveAddressBtn.click();
+
+        MenuPage.goToLogout();
+        LoginPage.login(SettingsProfilePage.credentials[0].username, SettingsProfilePage.credentials[0].password);
+        MenuPage.goToSettingsShipping();
+
+        expect(SettingsShippingPage.inputFieldContactPhone.getValue()).toEqual(expContactPhone);
+    })
+
+    it('Error message Contact Phone', () => {
+        SettingsShippingPage.edit(SettingsShippingPage.inputFieldContactPhone, inpContactPhone + inpContactPhone);
+        SettingsShippingPage.errorMessage.waitForDisplayed();
+        expect(SettingsShippingPage.errorMessage.getText()).toEqual(expErrorMessage);
+    })
 })

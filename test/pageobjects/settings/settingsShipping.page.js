@@ -14,6 +14,7 @@ class SettingsShippingPage extends Page {
         return $("//div[@title='Belarus']/div[.='Belarus']");
     }
 
+
     get inputFieldStreet() {
         return $("//input[@id='address']");
     }
@@ -23,7 +24,11 @@ class SettingsShippingPage extends Page {
     }
 
     get dropDownState() {
-        return $("//input[@id='state']");
+        return $$("//span[@class='ant-select-selection-item']")[2];
+    }
+
+    get selectMinsk() {
+        return $("//div[@title='Minsk']/div[.='Minsk']");
     }
 
     get inputFieldPostalCode() {

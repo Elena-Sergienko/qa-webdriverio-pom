@@ -19,7 +19,7 @@ describe('My Login application', () => {
         expect(LoginPage.btnSubmit).not.toBeClickable();
     })
 
-    it('authorization fails if wrong credentials provided', () => { // ? падает когда 2-3 spec, когда 1 чаще нет
+    it('authorization fails if wrong credentials provided', () => {
         LoginPage.setUsername('example@example.com');
         LoginPage.setPassword('111111');
         LoginPage.clickSubmit();
@@ -27,7 +27,7 @@ describe('My Login application', () => {
         expect(LoginPage.notification).toHaveText('Auth failed');
     });
 
-    it('email format validation', () => {  // ? падает когда 2-3 spec, когда 1 чаще нет
+    it('email format validation', () => {
         LoginPage.setUsername('123');
         expect(LoginPage.usernameValidation).toHaveText(`'email' is not a valid email`);
     })

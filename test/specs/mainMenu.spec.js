@@ -17,10 +17,6 @@ describe('Menu', () => {
         LoginPage.login("admin@gmail.com", "111111");
     })
 
-    // beforeEach(() => {         // нужно ли перед каждым it обновлять или логин каждый раз или можно ничего из этого, просто переходить по вкладкам ?
-    //     browser.refresh();
-    // })
-
     it('Menu/courses', () => {
         MenuPage.menuCourses.click();
 

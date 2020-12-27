@@ -3,7 +3,6 @@ import ProfilePage from "../pageobjects/profile.page";
 import SettingsProfilePage from "../pageobjects/settings/settingsProfile.page"
 import MenuPage from "../pageobjects/menu.page";
 import AdminUsersPage from "../pageobjects/admin/adminUsers.page";
-import MainMenu from "../pageobjects/menu.page";
 
 
 describe('Settings Profile', () => {
@@ -14,9 +13,6 @@ describe('Settings Profile', () => {
     beforeEach(() => {
         MenuPage.goToSettingsProfile();
     })
-    // beforeEach(() => {         // нужно ли перед каждым it обновлять или логин каждый раз или можно ничего из этого, просто переходить по вкладкам ?
-    //     browser.refresh();
-    // })
 
     const inpFirstName = "Elena";
     const expFirstName = "Elena";
@@ -95,7 +91,7 @@ describe('Settings Profile', () => {
 
     xit('Edit Country', () => {
         SettingsProfilePage.inputFieldCountry.click();
-        // SettingsProfilePage.countryAzerbaijan.scrollIntoView(); // scroll не работает в данной ситуации
+        // SettingsProfilePage.countryAzerbaijan.scrollIntoView(); // scroll не работает так.
         // SettingsProfilePage.countryAzerbaijan.click();
 
         SettingsProfilePage.countryRussia.click();
@@ -106,7 +102,7 @@ describe('Settings Profile', () => {
         AdminUsersPage.inputFieldEmail.setValue(SettingsProfilePage.credentials[0].username);
         browser.pause(4000) //
         //
-        // // AdminUsersPage.country.scroll();   // scroll не работает или как найти правильный селектор чтобы подтвердить выбранную страну
+        // // AdminUsersPage.country.scroll();   // ?? как использовать scroll или как найти правильный селектор чтобы подтвердить выбранную страну
 
         browser.pause(5000)
         expect(AdminUsersPage.country.getText()).toEqual(expCountry);
@@ -114,7 +110,7 @@ describe('Settings Profile', () => {
 
     it('Edit English level', () => {
         SettingsProfilePage.inputFieldEnglishLevel.click();
-        SettingsProfilePage.englishAdvanced.click();                // как проверить этот тест? где отображается уровень английского
+        SettingsProfilePage.englishAdvanced.click();                // ?? как проверить этот тест? где отображается уровень английского (с чем сравнить)
         SettingsProfilePage.saveBtn.click();
 
         MenuPage.goToLogout();

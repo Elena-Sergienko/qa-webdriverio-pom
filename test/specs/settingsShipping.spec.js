@@ -2,7 +2,6 @@ import LoginPage from "../pageobjects/login.page";
 import SettingsProfilePage from "../pageobjects/settings/settingsProfile.page"
 import SettingsShippingPage from "../pageobjects/settings/settingsShipping.page"
 import MenuPage from "../pageobjects/menu.page";
-import MainMenu from "../pageobjects/menu.page";
 
 
 describe('Settings Shipping address', () => {
@@ -13,9 +12,6 @@ describe('Settings Shipping address', () => {
     beforeEach(() => {
         MenuPage.goToSettingsShipping();
     })
-    // beforeEach(() => {         // нужно ли перед каждым it обновлять или логин каждый раз или можно ничего из этого, просто переходить по вкладкам ?
-    //     browser.refresh();
-    // })
 
     const inpFullName = "Anna Ivanova";
     const expFullName = "Anna Ivanova";
@@ -81,7 +77,7 @@ describe('Settings Shipping address', () => {
     })
 
     xit('Select and save State/Province', () => {
-        SettingsShippingPage.dropDownState.click(); // не получается выбрать селектор правильно
+        SettingsShippingPage.dropDownState.click(); // ?? не получается выбрать селектор правильно
         browser.pause(3000)
         SettingsShippingPage.selectMinsk.click();
         browser.pause(3000)

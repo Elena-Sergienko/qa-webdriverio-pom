@@ -11,9 +11,6 @@ describe('Settings Links', () => {
         browser.maximizeWindow();
         LoginPage.login(SettingsProfilePage.credentials[0].username, SettingsProfilePage.credentials[0].password);
     })
-    // beforeEach(() => {         // нужно ли перед каждым it обновлять или логин каждый раз или можно ничего из этого, просто переходить по вкладкам ?
-    //     browser.refresh();
-    // })
 
     const inpGDResumeLink = "https://docs.google.com/document/d/1U1O7hDDLujUfNmcvs_a5vd23G7xIHR2mKVUPDXaoQhw/edit?usp=sharing";
     const expErrorGoogle = "The link has to refer to https://docs.google.com/document/";
@@ -63,7 +60,7 @@ describe('Settings Links', () => {
             MenuPage.selectProfile.click();
             let checkLink = ProfilePage.iconGDResume.getAttribute("href");
 
-            expect(checkLink).toEqual(expGSResumeLink);   // как здесь проверить еще и на открывающейся сторонней странице (googleDoc, gitHub, codewars...)
+            expect(checkLink).toEqual(expGSResumeLink);   // ?? как здесь проверить еще и на открывающейся сторонней странице (googleDoc, gitHub, codewars...)
         })
     })
 
@@ -93,7 +90,7 @@ describe('Settings Links', () => {
             MenuPage.goToProfile();
             let checkLink = ProfilePage.iconLinkedin.getAttribute("href");
 
-            expect(checkLink).toEqual(expLinkedinLink);   // как здесь проверить еще и на открывающейся сторонней странице (googleDoc, gitHub, codewars...)
+            expect(checkLink).toEqual(expLinkedinLink);   // ?? как здесь проверить еще и на открывающейся сторонней странице (googleDoc, gitHub, codewars...)
         })
     })
 
@@ -123,7 +120,7 @@ describe('Settings Links', () => {
             MenuPage.goToProfile();
             let checkLink = ProfilePage.iconFacebook.getAttribute("href");
 
-            expect(checkLink).toEqual(expFacebookLink);   // как здесь проверить еще и на открывающейся сторонней странице (googleDoc, gitHub, codewars...)
+            expect(checkLink).toEqual(expFacebookLink);   // ?? как здесь проверить еще и на открывающейся сторонней странице (googleDoc, gitHub, codewars...)
         })
     })
 
@@ -153,7 +150,7 @@ describe('Settings Links', () => {
             MenuPage.goToProfile();
             let checkLink = ProfilePage.iconGitHub.getAttribute("href");
 
-            expect(checkLink).toEqual(expGitHubLink);   // как здесь проверить еще и на открывающейся сторонней странице (googleDoc, gitHub, codewars...)
+            expect(checkLink).toEqual(expGitHubLink);   // ?? как здесь проверить еще и на открывающейся сторонней странице (googleDoc, gitHub, codewars...)
         })
     })
 
@@ -183,7 +180,7 @@ describe('Settings Links', () => {
             MenuPage.goToProfile();
             let checkLink = ProfilePage.iconCodewars.getAttribute("href");
 
-            expect(checkLink).toEqual(expCodewarsLink);   // как здесь проверить еще и на открывающейся сторонней странице (googleDoc, gitHub, codewars...)
+            expect(checkLink).toEqual(expCodewarsLink);   // ?? как здесь проверить еще и на открывающейся сторонней странице (googleDoc, gitHub, codewars...)
         })
     })
 

@@ -8,10 +8,6 @@ describe('My Login application', () => {
         browser.maximizeWindow();
     })
 
-    after(() => {
-        MainMenu.goToLogout();
-    })
-
     for (const iteration of SettingsProfilePage.credentials) {
         it('should login with valid credentials', () => {
             LoginPage.login(iteration.username, iteration.password);

@@ -21,7 +21,10 @@ exports.config = {
     ],
     // Patterns to exclude.
     exclude: [
-        // 'path/to/excluded/files'
+        // './test/specs/login.spec.js',
+        // './test/specs/settingsShipping.spec.js',
+        // './test/specs/settingsLinks.spec.js',
+
     ],
     //
     // ============

@@ -13,17 +13,12 @@ import MainMenu from "../pageobjects/menu.page";
 
 describe('Menu', () => {
     before(() => {
-        browser.refresh();
         browser.maximizeWindow();
         LoginPage.login("admin@gmail.com", "111111");
     })
 
     // beforeEach(() => {         // нужно ли перед каждым it обновлять или логин каждый раз или можно ничего из этого, просто переходить по вкладкам ?
     //     browser.refresh();
-    // })
-
-    // after(() => {
-    //     MainMenu.goToLogout();
     // })
 
     it('Menu/courses', () => {

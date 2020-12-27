@@ -7,7 +7,6 @@ import MainMenu from "../pageobjects/menu.page";
 
 describe('Settings Shipping address', () => {
     before(() => {
-        browser.refresh();
         browser.maximizeWindow();
         LoginPage.login(SettingsProfilePage.credentials[0].username, SettingsProfilePage.credentials[0].password);
     })
@@ -17,10 +16,6 @@ describe('Settings Shipping address', () => {
     // beforeEach(() => {         // нужно ли перед каждым it обновлять или логин каждый раз или можно ничего из этого, просто переходить по вкладкам ?
     //     browser.refresh();
     // })
-
-    after(() => {
-        MainMenu.goToLogout();
-    })
 
     const inpFullName = "Anna Ivanova";
     const expFullName = "Anna Ivanova";

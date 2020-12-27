@@ -4,12 +4,9 @@ import SettingsProfilePage from "../pageobjects/settings/settingsProfile.page";
 
 describe('My Login application', () => {
     beforeEach(() => {
+    browser.refresh();
         LoginPage.open();
         browser.maximizeWindow();
-    })
-
-    after(() => {
-        MainMenu.goToLogout();
     })
 
     for (const iteration of SettingsProfilePage.credentials) {

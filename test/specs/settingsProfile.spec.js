@@ -12,6 +12,7 @@ describe('Settings Profile', () => {
         LoginPage.login(SettingsProfilePage.credentials[0].username, SettingsProfilePage.credentials[0].password);
     })
     beforeEach(() => {
+        browser.refresh();
         MenuPage.goToSettingsProfile();
     })
     // beforeEach(() => {         // нужно ли перед каждым it обновлять или логин каждый раз или можно ничего из этого, просто переходить по вкладкам ?

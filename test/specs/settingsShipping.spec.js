@@ -7,6 +7,7 @@ import MainMenu from "../pageobjects/menu.page";
 
 describe('Settings Shipping address', () => {
     before(() => {
+        browser.refresh();
         browser.maximizeWindow();
         LoginPage.login(SettingsProfilePage.credentials[0].username, SettingsProfilePage.credentials[0].password);
     })

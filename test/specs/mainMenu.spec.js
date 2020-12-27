@@ -13,6 +13,7 @@ import MainMenu from "../pageobjects/menu.page";
 
 describe('Menu', () => {
     before(() => {
+        browser.refresh();
         browser.maximizeWindow();
         LoginPage.login("admin@gmail.com", "111111");
     })
@@ -21,9 +22,9 @@ describe('Menu', () => {
     //     browser.refresh();
     // })
 
-    after(() => {
-        MainMenu.goToLogout();
-    })
+    // after(() => {
+    //     MainMenu.goToLogout();
+    // })
 
     it('Menu/courses', () => {
         MenuPage.menuCourses.click();

@@ -8,16 +8,11 @@ import MainMenu from "../pageobjects/menu.page";
 
 describe('Settings Links', () => {
     before(() => {
-        browser.refresh();
         browser.maximizeWindow();
         LoginPage.login(SettingsProfilePage.credentials[0].username, SettingsProfilePage.credentials[0].password);
     })
     // beforeEach(() => {         // нужно ли перед каждым it обновлять или логин каждый раз или можно ничего из этого, просто переходить по вкладкам ?
     //     browser.refresh();
-    // })
-
-    // after(() => {
-    //     MainMenu.goToLogout();
     // })
 
     const inpGDResumeLink = "https://docs.google.com/document/d/1U1O7hDDLujUfNmcvs_a5vd23G7xIHR2mKVUPDXaoQhw/edit?usp=sharing";

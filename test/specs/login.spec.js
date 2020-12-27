@@ -4,7 +4,6 @@ import SettingsProfilePage from "../pageobjects/settings/settingsProfile.page";
 
 describe('My Login application', () => {
     beforeEach(() => {
-    browser.refresh();
         LoginPage.open();
         browser.maximizeWindow();
     })

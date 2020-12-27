@@ -8,15 +8,15 @@ import MainMenu from "../pageobjects/menu.page";
 
 
 describe('Settings Password', () => {
-    before(() => {
-        browser.maximizeWindow();
-        LoginPage.login(SettingsPasswordPage.credentials[0].username, SettingsPasswordPage.credentials[0].password);
-    })
 
     const inpOldPassword = "111111";
-    const inpNewPassword = "222222";
-    const inpConfirmNew = "222222";
+    const inpNewPassword = "test222222";
+    const inpConfirmNew = "test222222";
 
+    before(() => {
+        browser.maximizeWindow();
+        LoginPage.login("test@account.com", inpOldPassword);
+    })
 
     xit('Edit Google Doc resume link', () => { // кнопка не становится активной - баг??
         MenuPage.goToSettingsPassword();
@@ -28,7 +28,7 @@ describe('Settings Password', () => {
         SettingsPasswordPage.updatePasswordBtn.click();
 
         MenuPage.goToLogout();
-        LoginPage.login(SettingsPasswordPage.credentials[0].username, inpNewPassword);
+        LoginPage.login("test@account.com", inpNewPassword);
 
         expect(MainMenu.topMenu).toBeExisting();
     })

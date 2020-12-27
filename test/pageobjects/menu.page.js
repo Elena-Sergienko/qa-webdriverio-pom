@@ -86,6 +86,13 @@ class MenuPage extends Page {
         this.selectSettings.waitForDisplayed();
         this.selectSettings.click();
         SettingsProfilePage.linkPassword.click();
+    }
+
+    goToSettingsEmail(){
+        this.profileDropdown.click();
+        this.selectSettings.waitForDisplayed();
+        this.selectSettings.click();
+        SettingsProfilePage.linkEmail.click();
 
     }
 

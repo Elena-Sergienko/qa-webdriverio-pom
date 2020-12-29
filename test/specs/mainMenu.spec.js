@@ -1,6 +1,6 @@
 import LoginPage from "../pageobjects/login.page";
 import ProfilePage from "../pageobjects/profile.page";
-import CoursesPage from "../pageobjects/modules/courses.page";
+import CoursesPage from "../pageobjects/modules/courses/courses.page";
 import CardsPage from "../pageobjects/modules/cards.page";
 import DiaryPage from "../pageobjects/modules/diary.page";
 import GroupPage from "../pageobjects/modules/groups.page";

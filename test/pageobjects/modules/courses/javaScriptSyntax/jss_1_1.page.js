@@ -1,6 +1,6 @@
 import Page from '../../../page';
 
-class Section_1_1Page extends Page {
+class Jss_1_1Page extends Page {
 
     get playVideo() {
         return $("//iframe[@id='widget2']");
@@ -33,4 +33,4 @@ class Section_1_1Page extends Page {
 
 }
 
-export default new Section_1_1Page();
+export default new Jss_1_1Page();

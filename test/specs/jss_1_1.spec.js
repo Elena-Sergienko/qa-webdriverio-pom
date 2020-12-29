@@ -3,7 +3,7 @@ import SettingsProfilePage from "../pageobjects/settings/settingsProfile.page"
 import MenuPage from "../pageobjects/menu.page"
 import CoursesPage from "../pageobjects/modules/courses/courses.page"
 import ContentsJSSPage from "../pageobjects/modules/courses/javaScriptSyntax/contentsJSS.page"
-import Section_1_1Page from "../pageobjects/modules/courses/javaScriptSyntax/section_1_1.page"
+import Jss_1_1Page from "../pageobjects/modules/courses/javaScriptSyntax/jss_1_1.page"
 
 
 describe('Java Script Syntax', () => {
@@ -28,8 +28,8 @@ describe('Java Script Syntax', () => {
             ContentsJSSPage.section_1_1.click();
         }
 
-        expect(Section_1_1Page.playVideo).toBeExisting();
-        expect(Section_1_1Page.playVideo).toBeClickable();
+        expect(Jss_1_1Page.playVideo).toBeExisting();
+        expect(Jss_1_1Page.playVideo).toBeClickable();
     })
 
     it('Section 1. Lecture 1. Quiz 1 is available', () => {
@@ -37,26 +37,18 @@ describe('Java Script Syntax', () => {
         CoursesPage.javaScriptSyntax.click();
         ContentsJSSPage.section_1_1.click();
 
-        Section_1_1Page.quize_1.scrollIntoView();
+        Jss_1_1Page.quize_1.scrollIntoView();
 
-        if (Section_1_1Page.quize_1_Status.getText() === "Opened") {
-            Section_1_1Page.quize_1.click();
-            Section_1_1Page.startQuizBtn.waitForDisplayed();
-            Section_1_1Page.startQuizBtn.click();
-        } else if (Section_1_1Page.quize_1_Status.getText() === "Just started"){
-            Section_1_1Page.quize_1.click();
+        if (Jss_1_1Page.quize_1_Status.getText() === "Opened") {
+            Jss_1_1Page.quize_1.click();
+            Jss_1_1Page.startQuizBtn.waitForDisplayed();
+            Jss_1_1Page.startQuizBtn.click();
+        } else if (Jss_1_1Page.quize_1_Status.getText() === "Just started"){
+            Jss_1_1Page.quize_1.click();
 
         }
 
-
-        // browser.pause(3000)   // ?? как заменить эту паузу в данном случае
-        //
-        // if (Section_1_1Page.startQuizBtn.isDisplayed()) {
-        //     Section_1_1Page.startQuizBtn.click();
-        //
-        // }
-
-        expect(Section_1_1Page.quizeOpened).toBeDisplayed();
+        expect(Jss_1_1Page.quizeOpened).toBeDisplayed();
     })
 
 })

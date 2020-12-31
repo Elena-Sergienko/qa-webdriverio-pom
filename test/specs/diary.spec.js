@@ -1,9 +1,7 @@
 import LoginPage from "../pageobjects/login.page";
 import SettingsProfilePage from "../pageobjects/settings/settingsProfile.page"
 import MenuPage from "../pageobjects/menu.page"
-import CoursesPage from "../pageobjects/modules/courses/courses.page"
-import ContentsJSSPage from "../pageobjects/modules/courses/javaScriptSyntax/contentsJSS.page"
-import Jss_1_1Page from "../pageobjects/modules/courses/javaScriptSyntax/jss_1_1.page"
+import DiaryPage from "../pageobjects/modules/diary/diary.page"
 
 
 describe('Diary', () => {
@@ -14,10 +12,19 @@ describe('Diary', () => {
         LoginPage.login(SettingsProfilePage.credentials[0].username, SettingsProfilePage.credentials[0].password);
     })
 
-    it('Create day report', () => {
+    it.only('Create day report', () => {
         MenuPage.menuDiary.click();
-
-
+        DiaryPage.createDayReportBtn.click();
+        DiaryPage.marks["watchedLectures"].click();
+        DiaryPage.marks["readDocumentation"].click();
+        DiaryPage.marks["codePractice"].click();
+        DiaryPage.inputFieldMorale.click();
+        DiaryPage.morale9.click();
+        browser.pause(6000)
+        DiaryPage.inputFieldHours.click();
+        DiaryPage.hours4.click();
+        DiaryPage.inputFieldDescription.setValue("gggfgffggfggfgffggfgfgfgfgfgfgfgfgfgfg");
+        DiaryPage.createBtn.click();
 
     })
 

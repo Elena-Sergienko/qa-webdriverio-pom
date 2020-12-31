@@ -10,6 +10,47 @@ class DiaryPage extends Page {
         return $("//span[.='Create day report']/..");
     }
 
+    get marks() {
+        return {
+            iNeedHelp: $("//input[@value='need_help']"),
+            iUnderstood: $("//input[@value='understood_everything']"),
+            helpedClassmates: $("//input[@value='help_classmates']"),
+            watchedLectures: $("//input[@value='watch_lessons']"),
+            readDocumentation: $("//input[@value='read_documentation']"),
+            codePractice: $("//input[@value='code_practice']"),
+            quizPractice: $("//input[@value='quiz']"),
+            interviewPreparation: $("//input[@value='interview_preparation']"),
+            recruiterPhoneCall: $("//input[@value='recruiter_phone_call']"),
+            interviewScreen: $("//input[@value='interview_screen']"),
+            interviewOnsite: $("//input[@value='interview_onsite']"),
+            gotJobOffer: $("//input[@value='job_offer']")
+        }
+    }
+
+    get inputFieldMorale() {
+        return $("//input[@id='morale']");
+    }
+
+    get morale9() {
+        return $("//div[@title=\"9\"]");
+    }
+
+    get inputFieldHours() {
+        return $("//input[@id='hours']");
+    }
+
+    get hours4() {
+        return $("//div[text()='4']");
+    }
+
+    get inputFieldDescription() {
+        return $("//input[@id='description']");
+    }
+
+    get createBtn() {
+        return $("//button[@type='submit']");
+    }
+
     get verticalMenu() {
         return $("//img[@class='ant-dropdown-trigger']");
     }

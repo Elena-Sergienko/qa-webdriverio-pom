@@ -55,6 +55,14 @@ class DiaryPage extends Page {
         return $("//div[@class='ant-notification-notice-message']");
     }
 
+    get inputFieldSelectStudentName() {
+        return $("//input[@id='userId']");
+    }
+
+    get lastDayReport() {
+        return $("//div[@class='small']/..");
+    }
+
     get verticalMenu() {
         return $("//img[@class='ant-dropdown-trigger']");
     }

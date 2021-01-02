@@ -34,6 +34,10 @@ class ProfilePage extends Page {
         return $("//h3[.='Goals']/following-sibling::div")
     }
 
+    get lastDailyReport() {
+        return $("//div[@class='ant-row mb-4'][1]")
+    }
+
     firstName(){
         let names = this.userName.getText().split(" ");
         return names[0];
@@ -43,6 +47,8 @@ class ProfilePage extends Page {
         let names = this.userName.getText().split(" ");
         return names[1];
     }
+
+
 
 
 }

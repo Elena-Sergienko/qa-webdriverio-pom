@@ -6,13 +6,14 @@ import DiaryPage from "../pageobjects/modules/diary/diary.page"
 
 describe('Diary', () => {
 
+    const report = "Day report 1. Day report 1. Day report 1";
 
     before(() => {
         browser.maximizeWindow();
         LoginPage.login(SettingsProfilePage.credentials[0].username, SettingsProfilePage.credentials[0].password);
     })
 
-    it.only('Create day report', () => {
+    it('Create day report', () => {
         MenuPage.menuDiary.click();
         DiaryPage.createDayReportBtn.click();
         DiaryPage.marks["watchedLectures"].click();
@@ -20,11 +21,15 @@ describe('Diary', () => {
         DiaryPage.marks["codePractice"].click();
         DiaryPage.inputFieldMorale.click();
         DiaryPage.morale9.click();
-        browser.pause(6000)
         DiaryPage.inputFieldHours.click();
-        DiaryPage.hours4.click();
-        DiaryPage.inputFieldDescription.setValue("gggfgffggfggfgffggfgfgfgfgfgfgfgfgfgfg");
+        browser.keys(['ArrowDown', "ArrowDown", "ArrowDown", 'Enter']);
+        DiaryPage.inputFieldDescription.setValue(report);
+        DiaryPage.createBtn.scrollIntoView();
         DiaryPage.createBtn.click();
+
+        DiaryPage.notificationDiaryCreated.waitForExist();
+
+        expect(DiaryPage.notificationDiaryCreated.getText()).toEqual("Diary created");
 
     })
 

@@ -38,6 +38,12 @@ describe('Diary', () => {
         MenuPage.menuDiary.click();
         DiaryPage.inputFieldSelectStudentName.setValue(userName);
         expect(DiaryPage.lastDayReport).toHaveTextContaining(report);
+    })
+
+    it.only('Edit day report', () => {
+        MenuPage.menuDiary.click();
+        DiaryPage.inputFieldSelectStudentName.setValue(userName);
+        expect(DiaryPage.lastDayReport).toHaveTextContaining(report);
 
 
     })

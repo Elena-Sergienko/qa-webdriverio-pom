@@ -51,6 +51,10 @@ class DiaryPage extends Page {
         return $("//button[@type='submit']");
     }
 
+    get notificationDiaryCreated() {
+        return $("//div[@class='ant-notification-notice-message']");
+    }
+
     get verticalMenu() {
         return $("//img[@class='ant-dropdown-trigger']");
     }

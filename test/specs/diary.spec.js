@@ -27,7 +27,8 @@ describe('Diary', () => {
         DiaryPage.createBtn.scrollIntoView();
         DiaryPage.createBtn.click();
 
-        expect(DiaryPage.inputFieldDescription.getValue()).toEqual(report);
+        DiaryPage.notificationDiaryCreated.waitForExist();
+        expect(DiaryPage.notificationDiaryCreated.getText()).toEqual("Diary created");
 
     })
 

@@ -13,7 +13,7 @@ describe('Diary', () => {
         LoginPage.login(SettingsProfilePage.credentials[0].username, SettingsProfilePage.credentials[0].password);
     })
 
-    it.only('Create day report', () => {
+    it('Create day report', () => {
         MenuPage.menuDiary.click();
         DiaryPage.createDayReportBtn.click();
         DiaryPage.marks["watchedLectures"].click();
@@ -28,6 +28,7 @@ describe('Diary', () => {
         DiaryPage.createBtn.click();
 
         DiaryPage.notificationDiaryCreated.waitForExist();
+
         expect(DiaryPage.notificationDiaryCreated.getText()).toEqual("Diary created");
 
     })

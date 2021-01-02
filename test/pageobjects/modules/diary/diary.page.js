@@ -32,19 +32,19 @@ class DiaryPage extends Page {
     }
 
     get morale9() {
-        return $("//div[@title=\"9\"]");
+        return $("//div[@title='9']");
     }
 
     get inputFieldHours() {
-        return $("//input[@id='hours']");
+        return $("//input[@id='hours']/../..");
     }
 
     get hours4() {
-        return $("//div[text()='4']");
+        return $("//div[@title='4']");
     }
 
     get inputFieldDescription() {
-        return $("//input[@id='description']");
+        return $("//textarea[@id='description']");
     }
 
     get createBtn() {

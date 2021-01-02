@@ -1,4 +1,5 @@
 import Page from './page';
+import MenuPage from './menu.page';
 
 class ProfilePage extends Page {
 
@@ -22,7 +23,7 @@ class ProfilePage extends Page {
         return $("//a[@data-qa='githubIcon']");
     }
 
-     get iconCodewars() {
+    get iconCodewars() {
         return $("//a[@data-qa='codewarsIcon']");
     }
 
@@ -38,17 +39,20 @@ class ProfilePage extends Page {
         return $("//div[@class='ant-row mb-4'][1]")
     }
 
-    firstName(){
+    firstName() {
         let names = this.userName.getText().split(" ");
         return names[0];
     }
 
-    lastName(){
+    lastName() {
         let names = this.userName.getText().split(" ");
         return names[1];
     }
 
-
+    getUserName() {
+        MenuPage.goToProfile();
+        return this.userName.getText();
+    }
 
 
 }

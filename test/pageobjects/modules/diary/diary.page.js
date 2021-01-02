@@ -10,6 +10,10 @@ class DiaryPage extends Page {
         return $("//span[.='Create day report']/..");
     }
 
+    get titleDrawer() {
+        return $("//div[@class='ant-drawer-title']");
+    }
+
     get marks() {
         return {
             iNeedHelp: $("//input[@value='need_help']"),
@@ -31,8 +35,15 @@ class DiaryPage extends Page {
         return $("//input[@id='morale']");
     }
 
+    get editInputFieldMorale() {
+        return $("//span[@class='ant-select-selection-item']");
+    }
+
     get morale9() {
         return $("//div[@title='9']");
+    }
+    get morale8() {
+        return $("//div[@title='8']");
     }
 
     get inputFieldHours() {
@@ -51,6 +62,10 @@ class DiaryPage extends Page {
         return $("//button[@type='submit']");
     }
 
+    get updateBtn() {
+        return $("//button[@type='submit']");
+    }
+
     get notificationDiaryCreated() {
         return $("//div[@class='ant-notification-notice-message']");
     }
@@ -59,12 +74,24 @@ class DiaryPage extends Page {
         return $("//input[@id='userId']");
     }
 
+    get inputFieldKeyword() {
+        return $("//input[@id='description']");
+    }
+
     get lastDayReport() {
         return $("//div[@class='small']/..");
     }
 
     get verticalMenu() {
         return $("//img[@class='ant-dropdown-trigger']");
+    }
+
+    get approveDayReport() {
+        return $("//li[.='Approve']");
+    }
+
+    get editDayReport() {
+        return $("//li[.='Edit']");
     }
 
     get deleteDayReport() {

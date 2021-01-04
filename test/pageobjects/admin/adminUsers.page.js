@@ -23,7 +23,6 @@ class AdminUsersPage extends Page {
     }
 
     get country() {
-        // return $("//div[@class='col-md-4 small'][3]")
         return $("//div[@class='small text-warning mt-1']/..");
     }
 
@@ -33,6 +32,10 @@ class AdminUsersPage extends Page {
 
     get phone() {
         return $("//img[@alt='countryName']/..");
+    }
+
+    get email() {
+        return $("//span[.='admin@gmail.com']");
     }
 
     get nameOfUser() {

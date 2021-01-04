@@ -18,6 +18,14 @@ class SettingsPasswordPage extends Page {
         return $("//button");
     }
 
+    get alertPasswordDoNotMatch() {
+        return $("//div[@class='ant-alert-message']");
+    }
+
+    get errorMessage() {
+        return $("//div[@class='ant-notification-notice-message']");
+    }
+
 
 }
 

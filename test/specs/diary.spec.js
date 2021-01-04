@@ -90,5 +90,27 @@ describe('Diary', () => {
 
     })
 
+    it('Delete day report', () => {
+        browser.refresh();
+        MenuPage.menuDiary.click();
+        DiaryPage.inputFieldKeyword.setValue("Edited report: " + report)
+        DiaryPage.verticalMenu.moveTo();
+        DiaryPage.deleteDayReport.click();
+        DiaryPage.modalConfirmDelete.waitForDisplayed();
+        expect(DiaryPage.modalConfirmDelete).toHaveText("Do you want to delete diary?");
+        expect(DiaryPage.modalConfirmDelContent).toHaveText(("Edited report: " + report).slice(0, 50));
+
+        if (DiaryPage.modalConfirmDelContent.getText() === ("Edited report: " + report).slice(0, 50)) {
+            DiaryPage.deleteOkBtn.click();
+            DiaryPage.createDayReportBtn.waitForDisplayed();
+            browser.refresh();
+        }
+
+        MenuPage.goToProfile();
+        ProfilePage.dailyReportHeader.scrollIntoView();
+        expect(ProfilePage.lastDailyReport).not.toHaveText("Edited report: " + report);
+
+    })
+
 
 })

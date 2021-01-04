@@ -2,18 +2,20 @@ import LoginPage from '../pageobjects/login.page';
 import MainMenu from '../pageobjects/menu.page';
 import SettingsProfilePage from "../pageobjects/settings/settingsProfile.page";
 
-describe('TEST SUITE: Login', () => {
-    const alert = {
-        required: "Required",
-        notValid: "'email' is not a valid email",
-        authFailed: "Auth failed"
-    }
+describe('TS: LOGIN', () => {
 
     const inpData = {
         short: "123",
         nonExistent: "example@example.com",
         correctPassword: "111111"
     }
+
+    const alert = {
+        required: "Required",
+        notValid: "'email' is not a valid email",
+        authFailed: "Auth failed"
+    }
+
 
     beforeEach(() => {
         LoginPage.open();

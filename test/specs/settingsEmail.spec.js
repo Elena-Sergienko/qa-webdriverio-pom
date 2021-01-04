@@ -1,7 +1,6 @@
 import LoginPage from "../pageobjects/login.page";
-import SettingsProfilePage from "../pageobjects/settings/settingsProfile.page"
-import SettingsEmailPage from "../pageobjects/settings/settingsEmail.page"
-import MenuPage from "../pageobjects/menu.page"
+import SettingsEmailPage from "../pageobjects/settings/settingsEmail.page";
+import MenuPage from "../pageobjects/menu.page";
 import MainMenu from "../pageobjects/menu.page";
 
 
@@ -29,7 +28,7 @@ describe('TS: SETTINGS PASSWORD', () => {
         SettingsEmailPage.updateEmailBtn.click();
 
         MenuPage.goToLogout();
-        LoginPage.login(inpNewEmail, 111111);
+        LoginPage.login(inpData.newEmail, inpData.password);
 
         expect(MainMenu.topMenu).toBeExisting();
     })

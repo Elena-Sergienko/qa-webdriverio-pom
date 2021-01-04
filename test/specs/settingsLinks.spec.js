@@ -3,7 +3,6 @@ import ProfilePage from "../pageobjects/profile.page";
 import SettingsProfilePage from "../pageobjects/settings/settingsProfile.page"
 import SettingsLinksPage from "../pageobjects/settings/settingsLinks.page"
 import MenuPage from "../pageobjects/menu.page"
-import MainMenu from "../pageobjects/menu.page";
 
 
 describe('Settings Links', () => {
@@ -11,176 +10,155 @@ describe('Settings Links', () => {
         browser.maximizeWindow();
         LoginPage.login(SettingsProfilePage.credentials[0].username, SettingsProfilePage.credentials[0].password);
     })
+    const inpData = {
+        googleResumeLink: "https://docs.google.com/document/d/1U1O7hDDLujUfNmcvs_a5vd23G7xIHR2mKVUPDXaoQhw/edit?usp=sharing",
+        linkedinLink: "https://www.linkedin.com/in/adam--ali/",
+        facebookLink: "https://www.facebook.com/test.test.73345",
+        gitHubLink: "https://github.com/test",
+        codewarsLink: "https://www.codewars.com/users/somoire"
+    }
 
-    const inpGDResumeLink = "https://docs.google.com/document/d/1U1O7hDDLujUfNmcvs_a5vd23G7xIHR2mKVUPDXaoQhw/edit?usp=sharing";
-    const expErrorGoogle = "The link has to refer to https://docs.google.com/document/";
-    const expGSResumeLink = "https://docs.google.com/document/d/1U1O7hDDLujUfNmcvs_a5vd23G7xIHR2mKVUPDXaoQhw/edit?usp=sharing";
-
-    const inpLinkedinLink = "https://www.linkedin.com/in/adam--ali/";
-    const expErrorLinkedin = "The link has to refer to https://www.linkedin.com/in/";
-    const expLinkedinLink = "https://www.linkedin.com/in/adam--ali/";
-
-    const inpFacebookLink = "https://www.facebook.com/test.test.73345";
-    const expErrorFacebook = "The link has to refer to https://www.facebook.com/";
-    const expFacebookLink = "https://www.facebook.com/test.test.73345";
-
-    const inpGitHubLink = "https://github.com/test";
-    const expErrorGitHub = "The link has to refer to https://github.com/";
-    const expGitHubLink = "https://github.com/test";
-
-    const inpCodewarsLink = "https://www.codewars.com/users/somoire";
-    const expErrorCodewars = "The link has to refer to https://www.codewars.com/users/";
-    const expCodewarsLink = "https://www.codewars.com/users/somoire";
+    const expData = {
+        googleResumeLink: "https://docs.google.com/document/d/1U1O7hDDLujUfNmcvs_a5vd23G7xIHR2mKVUPDXaoQhw/edit?usp=sharing",
+        linkedinLink: "https://www.linkedin.com/in/adam--ali/",
+        facebookLink: "https://www.facebook.com/test.test.73345",
+        gitHubLink: "https://github.com/test",
+        codewarsLink: "https://www.codewars.com/users/somoire",
+        errorGoogle: "The link has to refer to https://docs.google.com/document/",
+        errorLinkedin: "The link has to refer to https://www.linkedin.com/in/",
+        errorFacebook: "The link has to refer to https://www.facebook.com/",
+        errorGitHub: "The link has to refer to https://github.com/",
+        errorCodewars: "The link has to refer to https://www.codewars.com/users/"
+    }
 
 
-    describe('Google Doc resume link', () => {
+    describe('Sub-Suite: GOOGLE DOC RESUME LINK', () => {
 
-        it('Edit Google Doc resume link', () => {
+        it('TC: Verify that the field accepts a new value (Google Doc resume link) and the error warning does not appear', () => {
             MenuPage.goToSettingsLinks();
+            SettingsLinksPage.edit(SettingsLinksPage.inputFieldGDResumeLink, inpData.googleResumeLink);
 
-            SettingsLinksPage.edit(SettingsLinksPage.inputFieldGDResumeLink, inpGDResumeLink);
-            let checkLink = SettingsLinksPage.inputFieldGDResumeLink.getValue();
-
-            expect(checkLink).toEqual(expGSResumeLink);
-            expect(SettingsLinksPage.errorGoogle.isExisting()).toEqual(false);
+            expect(SettingsLinksPage.inputFieldGDResumeLink).toHaveValue(expData.googleResumeLink);
+            expect(SettingsLinksPage.errorGoogle).not.toBeExisting();
         })
 
-        it('Edit Google Doc resume link - Negative (link does not match)', () => {
-            SettingsLinksPage.edit(SettingsLinksPage.inputFieldGDResumeLink, inpCodewarsLink);
+        it('TC: Verify that an error warning appears when entering invalid data (link does not match)', () => {
+            SettingsLinksPage.edit(SettingsLinksPage.inputFieldGDResumeLink, inpData.codewarsLink);
             SettingsLinksPage.errorGoogle.waitForDisplayed();
 
-            expect(SettingsLinksPage.errorGoogle.getText()).toEqual(expErrorGoogle);
+            expect(SettingsLinksPage.errorGoogle).toHaveText(expData.errorGoogle);
         })
 
-        it('Edit and Save Google Doc resume link', () => {
-            SettingsLinksPage.edit(SettingsLinksPage.inputFieldGDResumeLink, inpGDResumeLink);
+        it('TC: Verify that saving the correct data (new Google Doc resume link) works correctly', () => {
+            SettingsLinksPage.edit(SettingsLinksPage.inputFieldGDResumeLink, inpData.googleResumeLink);
             SettingsLinksPage.saveBtn.click();
+            MenuPage.goToProfile();
 
-            MenuPage.profileDropdown.click();
-            MenuPage.selectProfile.click();
-            let checkLink = ProfilePage.iconGDResume.getAttribute("href");
-
-            expect(checkLink).toEqual(expGSResumeLink);   // ?? как здесь проверить еще и на открывающейся сторонней странице (googleDoc, gitHub, codewars...)
+            expect(ProfilePage.iconGDResume).toHaveAttr("href", expData.googleResumeLink);   // ?? как проверить еще и на открывающейся сторонней странице (googleDoc, gitHub, codewars...)
         })
     })
 
-    describe('LinkedIn profile link', () => {
+    describe('Sub-Suite: LINKEDIN PROFILE LINK', () => {
 
-        it('Edit LinkedIn profile link', () => {
+        it('TC: Verify that the field accepts a new value (LinkedIn profile link) and the error warning does not appear', () => {
             MenuPage.goToSettingsLinks();
+            SettingsLinksPage.edit(SettingsLinksPage.inputFieldLinkedinLink, inpData.linkedinLink);
 
-            SettingsLinksPage.edit(SettingsLinksPage.inputFieldLinkedinLink, inpLinkedinLink);
-            let checkLink = SettingsLinksPage.inputFieldLinkedinLink.getValue();
-
-            expect(checkLink).toEqual(expLinkedinLink);
-            expect(SettingsLinksPage.errorLinkedin.isExisting()).toEqual(false);
+            expect(SettingsLinksPage.inputFieldLinkedinLink).toHaveValue(expData.linkedinLink);
+            expect(SettingsLinksPage.errorLinkedin).not.toBeExisting();
         })
 
-        it('Edit LinkedIn profile link - Negative (link does not match)', () => {
-            SettingsLinksPage.edit(SettingsLinksPage.inputFieldLinkedinLink, inpGDResumeLink);
+        it('TC: Verify that an error warning appears when entering invalid data (link does not match)', () => {
+            SettingsLinksPage.edit(SettingsLinksPage.inputFieldLinkedinLink, inpData.googleResumeLink);
             SettingsLinksPage.errorLinkedin.waitForDisplayed();
 
-            expect(SettingsLinksPage.errorLinkedin.getText()).toEqual(expErrorLinkedin);
+            expect(SettingsLinksPage.errorLinkedin).toHaveText(expData.errorLinkedin);
         })
 
-        it('Edit and Save LinkedIn profile link', () => {
-            SettingsLinksPage.edit(SettingsLinksPage.inputFieldLinkedinLink, inpLinkedinLink);
+        it('TC: Verify that saving the correct data (new LinkedIn profile link) works correctly', () => {
+            SettingsLinksPage.edit(SettingsLinksPage.inputFieldLinkedinLink, inpData.linkedinLink);
             SettingsLinksPage.saveBtn.click();
-
             MenuPage.goToProfile();
-            let checkLink = ProfilePage.iconLinkedin.getAttribute("href");
 
-            expect(checkLink).toEqual(expLinkedinLink);   // ?? как здесь проверить еще и на открывающейся сторонней странице (googleDoc, gitHub, codewars...)
+            expect(ProfilePage.iconLinkedin).toHaveAttr("href", expData.linkedinLink);   // ?? как проверить еще и на открывающейся сторонней странице (googleDoc, gitHub, codewars...)
         })
     })
 
-    describe('Facebook profile link', () => {
+    describe('Sub-Suite: FACEBOOK PROFILE LINK', () => {
 
-        it('Edit Facebook profile link', () => {
+        it('TC: Verify that the field accepts a new value (Facebook profile link) and the error warning does not appear', () => {
             MenuPage.goToSettingsLinks();
+            SettingsLinksPage.edit(SettingsLinksPage.inputFieldFacebookLink, inpData.facebookLink);
 
-            SettingsLinksPage.edit(SettingsLinksPage.inputFieldFacebookLink, inpFacebookLink);
-            let checkLink = SettingsLinksPage.inputFieldFacebookLink.getValue();
-
-            expect(checkLink).toEqual(expFacebookLink);
-            expect(SettingsLinksPage.errorFacebook.isExisting()).toEqual(false);
+            expect(SettingsLinksPage.inputFieldFacebookLink).toHaveValue(expData.facebookLink);
+            expect(SettingsLinksPage.errorFacebook).not.toBeExisting();
         })
 
-        it('Edit Facebook profile link - Negative (link does not match)', () => {
-            SettingsLinksPage.edit(SettingsLinksPage.inputFieldFacebookLink, inpGDResumeLink);
+        it('TC: Verify that an error warning appears when entering invalid data (link does not match)', () => {
+            SettingsLinksPage.edit(SettingsLinksPage.inputFieldFacebookLink, inpData.googleResumeLink);
             SettingsLinksPage.errorFacebook.waitForDisplayed();
 
-            expect(SettingsLinksPage.errorFacebook.getText()).toEqual(expErrorFacebook);
+            expect(SettingsLinksPage.errorFacebook).toHaveText(expData.errorFacebook);
         })
 
-        it('Edit and Save Facebook profile link', () => {
-            SettingsLinksPage.edit(SettingsLinksPage.inputFieldFacebookLink, inpFacebookLink);
+        it('TC: Verify that saving the correct data (new Facebook profile link) works correctly', () => {
+            SettingsLinksPage.edit(SettingsLinksPage.inputFieldFacebookLink, inpData.facebookLink);
             SettingsLinksPage.saveBtn.click();
-
             MenuPage.goToProfile();
-            let checkLink = ProfilePage.iconFacebook.getAttribute("href");
 
-            expect(checkLink).toEqual(expFacebookLink);   // ?? как здесь проверить еще и на открывающейся сторонней странице (googleDoc, gitHub, codewars...)
+            expect(ProfilePage.iconFacebook).toHaveAttr("href", expData.facebookLink);   // ?? как здесь проверить еще и на открывающейся сторонней странице (googleDoc, gitHub, codewars...)
         })
     })
 
-    describe('GitHub profile link', () => {
+    describe('Sub-Suite: GITHUB PROFILE LINK', () => {
 
-        it('Edit GitHub profile link', () => {
+        it('TC: Verify that the field accepts a new value (GitHub profile link) and the error warning does not appear', () => {
             MenuPage.goToSettingsLinks();
+            SettingsLinksPage.edit(SettingsLinksPage.inputFieldGitHubLink, inpData.gitHubLink);
 
-            SettingsLinksPage.edit(SettingsLinksPage.inputFieldGitHubLink, inpGitHubLink);
-            let checkLink = SettingsLinksPage.inputFieldGitHubLink.getValue();
-
-            expect(checkLink).toEqual(expGitHubLink);
-            expect(SettingsLinksPage.errorGitHub.isExisting()).toEqual(false);
+            expect(SettingsLinksPage.inputFieldGitHubLink).toHaveValue(expData.gitHubLink);
+            expect(SettingsLinksPage.errorGitHub).not.toBeExisting();
         })
 
-        it('Edit GitHub profile link - Negative (link does not match)', () => {
-            SettingsLinksPage.edit(SettingsLinksPage.inputFieldGitHubLink, inpCodewarsLink);
+        it('TC: Verify that an error warning appears when entering invalid data (link does not match)', () => {
+            SettingsLinksPage.edit(SettingsLinksPage.inputFieldGitHubLink, inpData.codewarsLink);
             SettingsLinksPage.errorGitHub.waitForDisplayed();
 
-            expect(SettingsLinksPage.errorGitHub.getText()).toEqual(expErrorGitHub);
+            expect(SettingsLinksPage.errorGitHub).toHaveText(expData.errorGitHub);
         })
 
-        it('Edit and Save GitHub profile link', () => {
-            SettingsLinksPage.edit(SettingsLinksPage.inputFieldGitHubLink, inpGitHubLink);
+        it('TC: Verify that saving the correct data (new GitHub profile link) works correctly', () => {
+            SettingsLinksPage.edit(SettingsLinksPage.inputFieldGitHubLink, inpData.gitHubLink);
             SettingsLinksPage.saveBtn.click();
-
             MenuPage.goToProfile();
-            let checkLink = ProfilePage.iconGitHub.getAttribute("href");
 
-            expect(checkLink).toEqual(expGitHubLink);   // ?? как здесь проверить еще и на открывающейся сторонней странице (googleDoc, gitHub, codewars...)
+            expect(ProfilePage.iconGitHub).toHaveAttr("href", expData.gitHubLink);   // ?? как проверить еще и на открывающейся сторонней странице (googleDoc, gitHub, codewars...)
         })
     })
 
-    describe('Codewars profile link', () => {
+    describe('Sub-Suite: CODEWARS PROFILE LINK', () => {
 
-        it('Edit Codewars profile link', () => {
+        it('TC: Verify that the field accepts a new value (Codewars profile link) and the error warning does not appear', () => {
             MenuPage.goToSettingsLinks();
+            SettingsLinksPage.edit(SettingsLinksPage.inputFieldCodewarsLink, inpData.codewarsLink);
 
-            SettingsLinksPage.edit(SettingsLinksPage.inputFieldCodewarsLink, inpCodewarsLink);
-            let checkLink = SettingsLinksPage.inputFieldCodewarsLink.getValue();
-
-            expect(checkLink).toEqual(expCodewarsLink);
-            expect(SettingsLinksPage.errorCodewars.isExisting()).toEqual(false);
+            expect(SettingsLinksPage.inputFieldCodewarsLink).toHaveValue(expData.codewarsLink);
+            expect(SettingsLinksPage.errorCodewars).not.toBeExisting();
         })
 
-        it('Edit Codewars profile link - Negative (link does not match)', () => {
-            SettingsLinksPage.edit(SettingsLinksPage.inputFieldCodewarsLink, inpGDResumeLink);
+        it('TC: Verify that an error warning appears when entering invalid data (link does not match)', () => {
+            SettingsLinksPage.edit(SettingsLinksPage.inputFieldCodewarsLink, inpData.googleResumeLink);
             SettingsLinksPage.errorCodewars.waitForDisplayed();
 
-            expect(SettingsLinksPage.errorCodewars.getText()).toEqual(expErrorCodewars);
+            expect(SettingsLinksPage.errorCodewars).toHaveText(expData.errorCodewars);
         })
 
-        it('Edit and Save Codewars profile link', () => {
-            SettingsLinksPage.edit(SettingsLinksPage.inputFieldCodewarsLink, inpCodewarsLink);
+        it('TC: Verify that saving the correct data (new Codewars profile link) works correctly', () => {
+            SettingsLinksPage.edit(SettingsLinksPage.inputFieldCodewarsLink, inpData.codewarsLink);
             SettingsLinksPage.saveBtn.click();
-
             MenuPage.goToProfile();
-            let checkLink = ProfilePage.iconCodewars.getAttribute("href");
 
-            expect(checkLink).toEqual(expCodewarsLink);   // ?? как здесь проверить еще и на открывающейся сторонней странице (googleDoc, gitHub, codewars...)
+            expect(ProfilePage.iconCodewars).toHaveAttr("href", expData.codewarsLink);   // ?? как проверить еще и на открывающейся сторонней странице (googleDoc, gitHub, codewars...)
         })
     })
 

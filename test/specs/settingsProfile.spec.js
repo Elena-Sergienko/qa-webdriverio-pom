@@ -6,6 +6,27 @@ import AdminUsersPage from "../pageobjects/admin/adminUsers.page";
 
 
 describe('Settings Profile', () => {
+
+    const inpData = {
+        firstName: "Elena",
+        lastName: "A",
+        phone: "11111111111",
+        about: "About me",
+        goal: "My goal - QA engineer"
+    }
+
+    const expData = {
+        firstName: "Elena",
+        lastName: "A",
+        phone: "11111111111",
+        about: "About me",
+        goal: "My goal - QA engineer",
+        country: "Russia",
+        english: "Advanced",
+        size: "Women - XS"
+    }
+
+
     before(() => {
         browser.maximizeWindow();
         LoginPage.login(SettingsProfilePage.credentials[0].username, SettingsProfilePage.credentials[0].password);
@@ -14,114 +35,92 @@ describe('Settings Profile', () => {
         MenuPage.goToSettingsProfile();
     })
 
-    const inpFirstName = "Elena";
-    const expFirstName = "Elena";
 
-    const inpLastName = "A";
-    const expLastName = "A";
-
-    const inpPhone = "11111111111";
-    const expPhone = "11111111111";
-
-    const inpAbout = "About me";
-    const expAbout = "About me";
-
-    const inpGoal = "My goal - QA engineer";
-    const expGoal = "My goal - QA engineer";
-
-    const expCountry = "Russia";
-    const expEnglish = "Advanced";
-    const expSize = "Women - XS";
-
-
-    it('Edit First Name', () => {
-        SettingsProfilePage.edit(SettingsProfilePage.inputFieldFirstName, inpFirstName);
+    it('TC: Verify that the user can change the First name', () => {
+        SettingsProfilePage.edit(SettingsProfilePage.inputFieldFirstName, inpData.firstName);
         SettingsProfilePage.saveBtn.click();
 
         MenuPage.goToProfile();
-        expect(ProfilePage.firstName()).toEqual(expFirstName);
+        expect(ProfilePage.firstName()).toEqual(expData.firstName);
     })
 
-    it('Edit Last Name', () => {
-        SettingsProfilePage.edit(SettingsProfilePage.inputFieldLastName, inpLastName);
+    it('TC: Verify that the user can change the Last name', () => {
+        SettingsProfilePage.edit(SettingsProfilePage.inputFieldLastName, inpData.lastName);
         SettingsProfilePage.saveBtn.click();
 
         MenuPage.goToProfile();
-        expect(ProfilePage.lastName()).toEqual(expLastName);
+        expect(ProfilePage.lastName()).toEqual(expData.lastName);
     })
 
-    it('Edit Phone', () => {
-        SettingsProfilePage.edit(SettingsProfilePage.inputFieldPhone, inpPhone);
+    it('TC: Verify that the user can change the Phone number', () => {
+        SettingsProfilePage.edit(SettingsProfilePage.inputFieldPhone, inpData.phone);
         SettingsProfilePage.saveBtn.click();
 
         MenuPage.goToAdminUsers();
         AdminUsersPage.inputFieldEmail.setValue(SettingsProfilePage.credentials[0].username);
-        browser.pause(4000) // как можно поставить паузу иначе в данном случае? waitUntil (что?)
-        expect(AdminUsersPage.phone.getText()).toEqual(expPhone);
+        AdminUsersPage.email.waitForDisplayed();
+
+        expect(AdminUsersPage.phone).toHaveText(expData.phone);
 
     })
 
-    it('Edit About', () => {
-        SettingsProfilePage.edit(SettingsProfilePage.inputFieldAbout, inpAbout);
+    it('TC: Verify that the user can change About section', () => {
+        SettingsProfilePage.edit(SettingsProfilePage.inputFieldAbout, inpData.about);
         SettingsProfilePage.saveBtn.click();
 
         MenuPage.goToAdminUsers();
         AdminUsersPage.inputFieldEmail.setValue(SettingsProfilePage.credentials[0].username);
-        browser.pause(4000) // как можно поставить паузу иначе в данном случае? waitUntil (что?)
+        AdminUsersPage.email.waitForDisplayed();
 
-        expect(AdminUsersPage.about.getText()).toEqual(expAbout);
+        expect(AdminUsersPage.about).toHaveText(expData.about);
 
         MenuPage.goToProfile();
-        expect(ProfilePage.aboutSection.getText()).toEqual(expAbout);
+        expect(ProfilePage.aboutSection).toHaveText(expData.about);
     })
 
-    it('Edit My goals', () => {
-        SettingsProfilePage.edit(SettingsProfilePage.inputFieldMyGoals, inpGoal);
+    it('TC: Verify that the user can change the Goal', () => {
+        SettingsProfilePage.edit(SettingsProfilePage.inputFieldMyGoals, inpData.goal);
         SettingsProfilePage.saveBtn.click();
 
         MenuPage.goToAdminUsers();
         AdminUsersPage.inputFieldEmail.setValue(SettingsProfilePage.credentials[0].username);
-        browser.pause(4000) // как можно поставить паузу иначе в данном случае? waitUntil (что?)
+        AdminUsersPage.email.waitForDisplayed();
 
-        expect(AdminUsersPage.goal.getText()).toEqual(expGoal);
+        expect(AdminUsersPage.goal).toHaveText(expData.goal);
 
         MenuPage.goToProfile();
-        expect(ProfilePage.goalsSection.getText()).toEqual(expGoal);
+        expect(ProfilePage.goalsSection).toHaveText(expData.goal);
     })
 
-    xit('Edit Country', () => {
+    it('TC: Verify that the user can change the Country of residence', () => {
         SettingsProfilePage.inputFieldCountry.click();
-        // SettingsProfilePage.countryAzerbaijan.scrollIntoView(); // scroll не работает так.
+        // SettingsProfilePage.countryAzerbaijan.scrollIntoView(); // ?? scroll не работает так. Как скролить
         // SettingsProfilePage.countryAzerbaijan.click();
 
         SettingsProfilePage.countryRussia.click();
-
         SettingsProfilePage.saveBtn.click();
 
         MenuPage.goToAdminUsers();
         AdminUsersPage.inputFieldEmail.setValue(SettingsProfilePage.credentials[0].username);
-        browser.pause(4000) //
-        //
-        // // AdminUsersPage.country.scroll();   // ?? как использовать scroll или как найти правильный селектор чтобы подтвердить выбранную страну
+        AdminUsersPage.email.waitForDisplayed();
+        AdminUsersPage.country.scrollIntoView();
 
-        browser.pause(5000)
-        expect(AdminUsersPage.country.getText()).toEqual(expCountry);
+        expect(AdminUsersPage.country).toHaveTextContaining(expData.country);
     })
 
-    it('Edit English level', () => {
+    it('TC: Verify that the user can change the information about the level of English proficiency', () => {
         SettingsProfilePage.inputFieldEnglishLevel.click();
-        SettingsProfilePage.englishAdvanced.click();                // ?? как проверить этот тест? где отображается уровень английского (с чем сравнить)
+        SettingsProfilePage.englishAdvanced.click();        // ?? как проверить этот тест? где отображается уровень английского (с чем сравнить)
         SettingsProfilePage.saveBtn.click();
 
         MenuPage.goToLogout();
         LoginPage.login(SettingsProfilePage.credentials[0].username, SettingsProfilePage.credentials[0].password);
         MenuPage.goToSettingsProfile();
 
-        let newEnglishLevel = SettingsProfilePage.inputFieldEnglishLevel.getText();
-        expect(newEnglishLevel).toEqual(expEnglish);
+        expect(SettingsProfilePage.inputFieldEnglishLevel).toHaveText(expData.english);
     })
 
-    it('Edit T-Shirt size', () => {
+    it('TC: Verify that the user can change the size of the T-shirt', () => {
         SettingsProfilePage.inputFieldTShirtSize.click();
         SettingsProfilePage.sizeWomenXS.click();
         SettingsProfilePage.saveBtn.click();
@@ -130,17 +129,16 @@ describe('Settings Profile', () => {
         LoginPage.login(SettingsProfilePage.credentials[0].username, SettingsProfilePage.credentials[0].password);
         MenuPage.goToSettingsProfile();
 
-        let newSize = SettingsProfilePage.inputFieldTShirtSize.getText();
-        expect(newSize).toEqual(expSize);
+        expect(SettingsProfilePage.inputFieldTShirtSize).toHaveText(expData.size);
     })
 
-    it('Save btn', () => {
+    it('TC: Verify that the data is saved after clicking the Save button', () => {
         SettingsProfilePage.saveBtn.waitForDisplayed();
         SettingsProfilePage.saveBtn.click();
         MenuPage.profileDropdown.click();
         MenuPage.selectProfile.click();
-        let checkName = ProfilePage.userName.getText();
-        expect(checkName).toEqual(expFirstName + ' ' + expLastName);
+
+        expect(ProfilePage.userName).toHaveText(expData.firstName + ' ' + expData.lastName);
     })
 
 })

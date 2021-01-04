@@ -35,6 +35,10 @@ class ProfilePage extends Page {
         return $("//h3[.='Goals']/following-sibling::div")
     }
 
+    get dailyReportHeader() {
+        return $("//h3[@data-qa='dailyReports']");
+    }
+
     get lastDailyReport() {
         return $("//div[@class='ant-row mb-4'][1]")
     }

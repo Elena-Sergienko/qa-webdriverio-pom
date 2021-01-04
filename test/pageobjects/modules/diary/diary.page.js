@@ -98,6 +98,18 @@ class DiaryPage extends Page {
         return $("//li[.='Delete']");
     }
 
+    get modalConfirmDelete() {
+        return $("//span[@class='ant-modal-confirm-title']");
+    }
+
+    get modalConfirmDelContent() {
+        return $("//div[@class='ant-modal-confirm-content']");
+    }
+
+    get deleteOkBtn() {
+        return $("//button[@class='ant-btn ant-btn-dangerous']");
+    }
+
 }
 
 export default new DiaryPage();

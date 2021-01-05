@@ -18,7 +18,7 @@ describe('TS: SETTINGS SHIPPING ADDRESS', () => {
         streetAddress: "5420 NE 28 Street, Apt. 298z",
         city: "Redmond",
         postalCode: "981067",
-        contactPhone: "12345678"
+        contactPhone: "123456789"
     }
 
     const expData = {
@@ -28,8 +28,8 @@ describe('TS: SETTINGS SHIPPING ADDRESS', () => {
         country: "Poland",
         stateProvince: "",
         postalCode: "981067",
-        contactPhone: "12345678",
-        errorMessage: "Phone number must be min: 8 and max: 9 numbers."
+        contactPhone: "123456789",
+        errorMessage: "Phone number must be min: 9 and max: 10 numbers."
     }
 
 
@@ -92,31 +92,31 @@ describe('TS: SETTINGS SHIPPING ADDRESS', () => {
         expect(SettingsShippingPage.dropDownState).toHaveText(expData.stateProvince);
     })
 
-    it('Input and Save Postal Code', () => {
-        SettingsShippingPage.edit(SettingsShippingPage.inputFieldPostalCode, inpPostalCode);
+    it('TC: Verify that the input field [Postal Code] accepts text (updated Postal Code) and after clicking Save Btn, the Postal Code is saved', () => {
+        SettingsShippingPage.edit(SettingsShippingPage.inputFieldPostalCode, inpData.postalCode);
         SettingsShippingPage.saveAddressBtn.click();
 
         MenuPage.goToLogout();
         LoginPage.login(SettingsProfilePage.credentials[0].username, SettingsProfilePage.credentials[0].password);
         MenuPage.goToSettingsShipping();
 
-        expect(SettingsShippingPage.inputFieldPostalCode.getValue()).toEqual(expPostalCode);
+        expect(SettingsShippingPage.inputFieldPostalCode).toHaveValue(expData.postalCode);
     })
 
-    it('Input and Save Contact Phone', () => {
-        SettingsShippingPage.edit(SettingsShippingPage.inputFieldContactPhone, inpContactPhone);
+    it('TC: Verify that the input field [Contact Phone] accepts text (updated Contact Phone) and after clicking Save Btn, the Contact Phone is saved', () => {
+        SettingsShippingPage.edit(SettingsShippingPage.inputFieldContactPhone, inpData.contactPhone);
         SettingsShippingPage.saveAddressBtn.click();
 
         MenuPage.goToLogout();
         LoginPage.login(SettingsProfilePage.credentials[0].username, SettingsProfilePage.credentials[0].password);
         MenuPage.goToSettingsShipping();
 
-        expect(SettingsShippingPage.inputFieldContactPhone.getValue()).toEqual(expContactPhone);
+        expect(SettingsShippingPage.inputFieldContactPhone).toHaveValue(expData.contactPhone);
     })
 
-    it('Error message Contact Phone', () => {
-        SettingsShippingPage.edit(SettingsShippingPage.inputFieldContactPhone, inpContactPhone + inpContactPhone);
+    it('TC: Verify that the error message appears if the phone number user entered does not match the required length of characters', () => {
+        SettingsShippingPage.edit(SettingsShippingPage.inputFieldContactPhone, inpData.contactPhone + inpData.contactPhone);
         SettingsShippingPage.errorMessage.waitForDisplayed();
-        expect(SettingsShippingPage.errorMessage.getText()).toEqual(expErrorMessage);
+        expect(SettingsShippingPage.errorMessage).toHaveText(expData.errorMessage);
     })
 })

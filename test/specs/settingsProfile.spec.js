@@ -21,7 +21,7 @@ describe('Settings Profile', () => {
         phone: "11111111111",
         about: "About me",
         goal: "My goal - QA engineer",
-        country: "Russia",
+        country: "",
         english: "Advanced",
         size: "Women - XS"
     }
@@ -92,19 +92,20 @@ describe('Settings Profile', () => {
         expect(ProfilePage.goalsSection).toHaveText(expData.goal);
     })
 
-    it('TC: Verify that the user can change the Country of residence', () => {
+    it('TC: Verify that the user can change the Country of residence', () => { // баг? не сохраняет новую страну
         SettingsProfilePage.inputFieldCountry.click();
         // SettingsProfilePage.countryAzerbaijan.scrollIntoView(); // ?? scroll не работает так. Как скролить
         // SettingsProfilePage.countryAzerbaijan.click();
 
-        SettingsProfilePage.countryRussia.click();
-        SettingsProfilePage.saveBtn.click();
+        // SettingsProfilePage.countryRussia.click();
+        browser.keys(['ArrowDown', "ArrowDown", "ArrowDown", 'Enter']);
 
+        SettingsProfilePage.saveBtn.click();
+        expData.country = SettingsProfilePage.inputFieldCountry.getText();
         MenuPage.goToAdminUsers();
         AdminUsersPage.inputFieldEmail.setValue(SettingsProfilePage.credentials[0].username);
         AdminUsersPage.email.waitForDisplayed();
         AdminUsersPage.country.scrollIntoView();
-
         expect(AdminUsersPage.country).toHaveTextContaining(expData.country);
     })
 

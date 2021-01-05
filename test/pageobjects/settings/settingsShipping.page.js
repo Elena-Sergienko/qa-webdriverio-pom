@@ -14,6 +14,9 @@ class SettingsShippingPage extends Page {
         return $("//div[@title='Belarus']/div[.='Belarus']");
     }
 
+    get selectPoland() {
+        return $("//div[@title='Poland']/div[.='Poland']");
+    }
 
     get inputFieldStreet() {
         return $("//input[@id='address']");
@@ -24,7 +27,7 @@ class SettingsShippingPage extends Page {
     }
 
     get dropDownState() {
-        return $$("//span[@class='ant-select-selection-item']")[2];
+        return $("//input[@id='state']/../following-sibling::span");
     }
 
     get selectMinsk() {

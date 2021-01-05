@@ -4,7 +4,7 @@ import SettingsShippingPage from "../pageobjects/settings/settingsShipping.page"
 import MenuPage from "../pageobjects/menu.page";
 
 
-describe('Settings Shipping address', () => {
+describe('TS: SETTINGS SHIPPING ADDRESS', () => {
     before(() => {
         browser.maximizeWindow();
         LoginPage.login(SettingsProfilePage.credentials[0].username, SettingsProfilePage.credentials[0].password);
@@ -13,108 +13,110 @@ describe('Settings Shipping address', () => {
         MenuPage.goToSettingsShipping();
     })
 
-    const inpFullName = "Anna Ivanova";
-    const expFullName = "Anna Ivanova";
+    const inpData = {
+        fullName: "Anna Ivanova",
+        streetAddress: "5420 NE 28 Street, Apt. 298z",
+        city: "Redmond",
+        postalCode: "981067",
+        contactPhone: "123456789"
+    }
 
-    const inpStreetAddress = "5420 NE 28 Street, Apt. 298z";
-    const expStreetAddress = "5420 NE 28 Street, Apt. 298z";
-
-    const inpCity = "Redmond";
-    const expCity = "Redmond";
-
-    const inpPostalCode = "981067";
-    const expPostalCode = "981067";
-
-    const inpContactPhone = "12345678";
-    const expContactPhone = "12345678";
-
-    const expErrorMessage = "Phone number must be min: 8 and max: 9 numbers.";
+    const expData = {
+        fullName: "Anna Ivanova",
+        streetAddress: "5420 NE 28 Street, Apt. 298z",
+        city: "Redmond",
+        country: "Poland",
+        stateProvince: "",
+        postalCode: "981067",
+        contactPhone: "123456789",
+        errorMessage: "Phone number must be min: 9 and max: 10 numbers."
+    }
 
 
-    it('Input and Save Full Name', () => {
-        SettingsShippingPage.edit(SettingsShippingPage.inputFieldFullName, inpFullName);
+    it('TC: Verify that the input field [Full Name] accepts text (updated full name) and after clicking Save Btn, the name is saved', () => {
+        SettingsShippingPage.edit(SettingsShippingPage.inputFieldFullName, inpData.fullName);
         SettingsShippingPage.saveAddressBtn.click();
 
         MenuPage.goToLogout();
         LoginPage.login(SettingsProfilePage.credentials[0].username, SettingsProfilePage.credentials[0].password);
         MenuPage.goToSettingsShipping();
 
-        expect(SettingsShippingPage.inputFieldFullName.getValue()).toEqual(expFullName);
+        expect(SettingsShippingPage.inputFieldFullName).toHaveValue(expData.fullName);
     })
 
-    it('Select and save Country', () => {
+    it('TC: Verify that the input field [Country] accepts text (updated country) and after clicking Save Btn, the country is saved', () => {
         SettingsShippingPage.dropDownCountry.click();
-        SettingsShippingPage.selectBelarus.click();
+        SettingsShippingPage.selectPoland.click();
         SettingsShippingPage.saveAddressBtn.click();
 
         MenuPage.goToLogout();
         LoginPage.login(SettingsProfilePage.credentials[0].username, SettingsProfilePage.credentials[0].password);
         MenuPage.goToSettingsShipping();
 
-        expect(SettingsShippingPage.dropDownCountry.getText()).toEqual("Belarus");
+        expect(SettingsShippingPage.dropDownCountry).toHaveText(expData.country);
     })
 
-    it('Input and Save Street address', () => {
-        SettingsShippingPage.edit(SettingsShippingPage.inputFieldStreet, inpStreetAddress);
+    it('TC: Verify that the input field [Street Address] accepts text (updated street address) and after clicking Save Btn, the street address is saved', () => {
+        SettingsShippingPage.edit(SettingsShippingPage.inputFieldStreet, inpData.streetAddress);
         SettingsShippingPage.saveAddressBtn.click();
 
         MenuPage.goToLogout();
         LoginPage.login(SettingsProfilePage.credentials[0].username, SettingsProfilePage.credentials[0].password);
         MenuPage.goToSettingsShipping();
 
-        expect(SettingsShippingPage.inputFieldStreet.getValue()).toEqual(expStreetAddress);
+        expect(SettingsShippingPage.inputFieldStreet).toHaveValue(expData.streetAddress);
     })
 
-    it('Input and Save City', () => {
-        SettingsShippingPage.edit(SettingsShippingPage.inputFieldCity, inpCity);
+    it('TC: Verify that the input field [City] accepts text (updated city) and after clicking Save Btn, the city is saved', () => {
+        SettingsShippingPage.edit(SettingsShippingPage.inputFieldCity, inpData.city);
         SettingsShippingPage.saveAddressBtn.click();
 
         MenuPage.goToLogout();
         LoginPage.login(SettingsProfilePage.credentials[0].username, SettingsProfilePage.credentials[0].password);
         MenuPage.goToSettingsShipping();
 
-        expect(SettingsShippingPage.inputFieldCity.getValue()).toEqual(expCity);
+        expect(SettingsShippingPage.inputFieldCity).toHaveValue(expData.city);
     })
 
-    xit('Select and save State/Province', () => {
-        SettingsShippingPage.dropDownState.click(); // ?? не получается выбрать селектор правильно
-        browser.pause(3000)
-        SettingsShippingPage.selectMinsk.click();
-        browser.pause(3000)
+    it('TC: Verify that the input field [State/Province] accepts text (updated State/Province) and after clicking Save Btn, the State/Province is saved', () => {
+        SettingsShippingPage.dropDownState.click();
+        browser.keys(['ArrowDown', "ArrowDown", "ArrowDown", 'Enter']);
+        expData.stateProvince = SettingsShippingPage.dropDownState.getText();
+
         SettingsShippingPage.saveAddressBtn.click();
 
         MenuPage.goToLogout();
         LoginPage.login(SettingsProfilePage.credentials[0].username, SettingsProfilePage.credentials[0].password);
         MenuPage.goToSettingsShipping();
 
-        expect(SettingsShippingPage.dropDownState.getText()).toEqual("Minsk");
+        expect(SettingsShippingPage.dropDownState).toHaveText(expData.stateProvince);
     })
 
-    it('Input and Save Postal Code', () => {
-        SettingsShippingPage.edit(SettingsShippingPage.inputFieldPostalCode, inpPostalCode);
+    it('TC: Verify that the input field [Postal Code] accepts text (updated Postal Code) and after clicking Save Btn, the Postal Code is saved', () => {
+        SettingsShippingPage.edit(SettingsShippingPage.inputFieldPostalCode, inpData.postalCode);
         SettingsShippingPage.saveAddressBtn.click();
 
         MenuPage.goToLogout();
         LoginPage.login(SettingsProfilePage.credentials[0].username, SettingsProfilePage.credentials[0].password);
         MenuPage.goToSettingsShipping();
 
-        expect(SettingsShippingPage.inputFieldPostalCode.getValue()).toEqual(expPostalCode);
+        expect(SettingsShippingPage.inputFieldPostalCode).toHaveValue(expData.postalCode);
     })
 
-    it('Input and Save Contact Phone', () => {
-        SettingsShippingPage.edit(SettingsShippingPage.inputFieldContactPhone, inpContactPhone);
+    it('TC: Verify that the input field [Contact Phone] accepts text (updated Contact Phone) and after clicking Save Btn, the Contact Phone is saved', () => {
+        SettingsShippingPage.edit(SettingsShippingPage.inputFieldContactPhone, inpData.contactPhone);
         SettingsShippingPage.saveAddressBtn.click();
 
         MenuPage.goToLogout();
         LoginPage.login(SettingsProfilePage.credentials[0].username, SettingsProfilePage.credentials[0].password);
         MenuPage.goToSettingsShipping();
 
-        expect(SettingsShippingPage.inputFieldContactPhone.getValue()).toEqual(expContactPhone);
+        expect(SettingsShippingPage.inputFieldContactPhone).toHaveValue(expData.contactPhone);
     })
 
-    it('Error message Contact Phone', () => {
-        SettingsShippingPage.edit(SettingsShippingPage.inputFieldContactPhone, inpContactPhone + inpContactPhone);
+    it('TC: Verify that the error message appears if the phone number user entered does not match the required length of characters', () => {
+        SettingsShippingPage.edit(SettingsShippingPage.inputFieldContactPhone, inpData.contactPhone + inpData.contactPhone);
         SettingsShippingPage.errorMessage.waitForDisplayed();
-        expect(SettingsShippingPage.errorMessage.getText()).toEqual(expErrorMessage);
+        expect(SettingsShippingPage.errorMessage).toHaveText(expData.errorMessage);
     })
 })

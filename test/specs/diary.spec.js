@@ -27,7 +27,7 @@ describe('Diary', () => {
         DiaryPage.inputFieldMorale.click();
         DiaryPage.morale9.click();
         DiaryPage.inputFieldHours.click();
-        browser.keys(['ArrowDown', "ArrowDown", "ArrowDown", 'Enter']); // 'ArrowDown'.replace(4) не работает почему-то
+        browser.keys(['ArrowDown'.repeat(3), 'Enter']);
         DiaryPage.inputFieldDescription.setValue(report);
         DiaryPage.createBtn.scrollIntoView();
         DiaryPage.createBtn.click();
@@ -72,7 +72,7 @@ describe('Diary', () => {
         DiaryPage.morale8.click();
 
         DiaryPage.inputFieldHours.click();
-        browser.keys(['ArrowDown', 'ArrowDown', 'Enter']); // 'ArrowDown'.replace() не работает почему-то
+        browser.keys(['ArrowDown'.repeat(2), 'Enter']);
         const oldDescription = DiaryPage.inputFieldDescription.getText();
         DiaryPage.inputFieldDescription.setValue("Edited report: " + oldDescription);
         DiaryPage.updateBtn.scrollIntoView();

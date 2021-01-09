@@ -80,7 +80,7 @@ describe('TS: SETTINGS SHIPPING ADDRESS', () => {
 
     it('TC: Verify that the input field [State/Province] accepts text (updated State/Province) and after clicking Save Btn, the State/Province is saved', () => {
         SettingsShippingPage.dropDownState.click();
-        browser.keys(['ArrowDown', "ArrowDown", "ArrowDown", 'Enter']);
+        browser.keys(['ArrowDown'.repeat(3), 'Enter']);
         expData.stateProvince = SettingsShippingPage.dropDownState.getText();
 
         SettingsShippingPage.saveAddressBtn.click();

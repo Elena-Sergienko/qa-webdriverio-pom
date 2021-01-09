@@ -98,7 +98,7 @@ describe('Settings Profile', () => {
         // SettingsProfilePage.countryAzerbaijan.click();
 
         // SettingsProfilePage.countryRussia.click();
-        browser.keys(['ArrowDown', "ArrowDown", "ArrowDown", 'Enter']);
+        browser.keys(['ArrowDown'.repeat(3), 'Enter']);
 
         SettingsProfilePage.saveBtn.click();
         expData.country = SettingsProfilePage.inputFieldCountry.getText();

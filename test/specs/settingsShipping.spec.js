@@ -4,7 +4,7 @@ import SettingsShippingPage from "../pageobjects/settings/settingsShipping.page"
 import MenuPage from "../pageobjects/menu.page";
 
 
-describe('TS: SETTINGS SHIPPING ADDRESS', () => {
+xdescribe('TS: SETTINGS SHIPPING ADDRESS', () => {
     before(() => {
         browser.maximizeWindow();
         LoginPage.login(SettingsProfilePage.credentials[0].username, SettingsProfilePage.credentials[0].password);

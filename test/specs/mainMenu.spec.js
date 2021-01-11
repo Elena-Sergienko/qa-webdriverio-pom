@@ -10,7 +10,7 @@ import GoalsPage from "../pageobjects/modules/goals.page";
 import MenuPage from "../pageobjects/menu.page";
 import SettingsProfilePage from "../pageobjects/settings/settingsProfile.page";
 
-describe('TS: MAIN MENU', () => {
+xdescribe('TS: MAIN MENU', () => {
 
     const expData = {
         urlCourses: "https://stage.localcoding.us/course",

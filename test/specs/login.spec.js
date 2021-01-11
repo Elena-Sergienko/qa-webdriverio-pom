@@ -2,7 +2,7 @@ import LoginPage from '../pageobjects/login.page';
 import MainMenu from '../pageobjects/menu.page';
 import SettingsProfilePage from "../pageobjects/settings/settingsProfile.page";
 
-describe('TS: LOGIN', () => {
+xdescribe('TS: LOGIN', () => {
 
     const inpData = {
         short: "123",

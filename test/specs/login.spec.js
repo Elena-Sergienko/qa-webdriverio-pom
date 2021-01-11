@@ -22,6 +22,7 @@ describe('TS: LOGIN', () => {
         browser.maximizeWindow();
     })
 
+
     for (const role of SettingsProfilePage.credentials) {
         it('TC: Should login with valid credentials', () => {
             LoginPage.login(role.username, role.password);

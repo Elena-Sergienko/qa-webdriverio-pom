@@ -121,7 +121,7 @@ describe('Settings Profile', () => {
         expect(SettingsProfilePage.inputFieldEnglishLevel).toHaveText(expData.english);
     })
 
-    it('TC: Verify that the user can change the size of the T-shirt', () => {
+    xit('TC: Verify that the user can change the size of the T-shirt', () => {
         SettingsProfilePage.inputFieldTShirtSize.click();
         SettingsProfilePage.sizeWomenXS.click();
         SettingsProfilePage.saveBtn.click();
@@ -133,7 +133,7 @@ describe('Settings Profile', () => {
         expect(SettingsProfilePage.inputFieldTShirtSize).toHaveText(expData.size);
     })
 
-    it('TC: Verify that the data is saved after clicking the Save button', () => {
+    xit('TC: Verify that the data is saved after clicking the Save button', () => {
         SettingsProfilePage.saveBtn.waitForDisplayed();
         SettingsProfilePage.saveBtn.click();
         MenuPage.profileDropdown.click();

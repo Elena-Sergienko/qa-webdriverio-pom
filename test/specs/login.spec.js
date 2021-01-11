@@ -29,7 +29,7 @@ describe('TS: LOGIN', () => {
         });
     }
 
-    it('TC: Submit button should be disabled if input fields are empty', () => {
+    xit('TC: Submit button should be disabled if input fields are empty', () => {
         expect(LoginPage.btnSubmit).not.toBeClickable();
     })
 
@@ -41,12 +41,12 @@ describe('TS: LOGIN', () => {
         expect(LoginPage.notification).toHaveText(alert.authFailed);
     });
 
-    it('TC: Email format validation', () => {
+    xit('TC: Email format validation', () => {
         LoginPage.setUsername(inpData.short);
         expect(LoginPage.usernameValidation).toHaveText(alert.notValid);
     })
 
-    it('TC: Email required validation', () => {
+    xit('TC: Email required validation', () => {
         LoginPage.setUsername(inpData.short);
         LoginPage.clearUsername();
         expect(LoginPage.usernameValidation).toHaveText(alert.required);

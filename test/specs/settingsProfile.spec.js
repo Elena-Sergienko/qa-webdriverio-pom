@@ -5,7 +5,7 @@ import MenuPage from "../pageobjects/menu.page";
 import AdminUsersPage from "../pageobjects/admin/adminUsers.page";
 
 
-describe('Settings Profile', () => {
+xdescribe('Settings Profile', () => {
 
     const inpData = {
         firstName: "Elena",
@@ -64,7 +64,7 @@ describe('Settings Profile', () => {
 
     })
 
-    it('TC: Verify that the user can change About section', () => {
+    xit('TC: Verify that the user can change About section', () => {
         SettingsProfilePage.edit(SettingsProfilePage.inputFieldAbout, inpData.about);
         SettingsProfilePage.saveBtn.click();
 

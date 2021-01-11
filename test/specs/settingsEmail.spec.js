@@ -4,7 +4,7 @@ import MenuPage from "../pageobjects/menu.page";
 import MainMenu from "../pageobjects/menu.page";
 
 
-describe('TS: SETTINGS EMAIL', () => {
+xdescribe('TS: SETTINGS EMAIL', () => {
 
     const inpData = {
         oldEmail: "test2@account.com",

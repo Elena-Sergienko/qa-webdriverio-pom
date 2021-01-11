@@ -5,7 +5,7 @@ import SettingsLinksPage from "../pageobjects/settings/settingsLinks.page"
 import MenuPage from "../pageobjects/menu.page"
 
 
-describe('Settings Links', () => {
+xdescribe('Settings Links', () => {
     before(() => {
         browser.maximizeWindow();
         LoginPage.login(SettingsProfilePage.credentials[0].username, SettingsProfilePage.credentials[0].password);

@@ -5,7 +5,7 @@ import MenuPage from "../pageobjects/menu.page";
 import AdminUsersPage from "../pageobjects/admin/adminUsers.page";
 
 
-xdescribe('Settings Profile', () => {
+describe('Settings Profile', () => {
 
     const inpData = {
         firstName: "Elena",
@@ -35,6 +35,12 @@ xdescribe('Settings Profile', () => {
         MenuPage.goToSettingsProfile();
     })
 
+    afterEach(() => {
+        if(SettingsProfilePage.notification.isDisplayed()){  // убрать когда починят ошибку на admin-users
+            SettingsProfilePage.closeErrorMessage.click();
+        }
+    })
+
 
     it('TC: Verify that the user can change the First name', () => {
         SettingsProfilePage.edit(SettingsProfilePage.inputFieldFirstName, inpData.firstName);
@@ -61,10 +67,10 @@ xdescribe('Settings Profile', () => {
         AdminUsersPage.email.waitForDisplayed();
 
         expect(AdminUsersPage.phone).toHaveText(expData.phone);
-
     })
 
-    xit('TC: Verify that the user can change About section', () => {
+    it('TC: Verify that the user can change About section', () => {
+        SettingsProfilePage.inputFieldAbout.waitForDisplayed(); // убрать когда починят ошибку на admin-users
         SettingsProfilePage.edit(SettingsProfilePage.inputFieldAbout, inpData.about);
         SettingsProfilePage.saveBtn.click();
 
@@ -121,7 +127,7 @@ xdescribe('Settings Profile', () => {
         expect(SettingsProfilePage.inputFieldEnglishLevel).toHaveText(expData.english);
     })
 
-    xit('TC: Verify that the user can change the size of the T-shirt', () => {
+    it('TC: Verify that the user can change the size of the T-shirt', () => {
         SettingsProfilePage.inputFieldTShirtSize.click();
         SettingsProfilePage.sizeWomenXS.click();
         SettingsProfilePage.saveBtn.click();
@@ -133,7 +139,7 @@ xdescribe('Settings Profile', () => {
         expect(SettingsProfilePage.inputFieldTShirtSize).toHaveText(expData.size);
     })
 
-    xit('TC: Verify that the data is saved after clicking the Save button', () => {
+    it('TC: Verify that the data is saved after clicking the Save button', () => {
         SettingsProfilePage.saveBtn.waitForDisplayed();
         SettingsProfilePage.saveBtn.click();
         MenuPage.profileDropdown.click();

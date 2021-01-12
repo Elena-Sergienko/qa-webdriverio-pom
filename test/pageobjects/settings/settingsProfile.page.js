@@ -26,6 +26,10 @@ class SettingsProfilePage extends Page {
         return $("//div[@data-qa='countries']");
     }
 
+    get closeErrorMessage() {
+        return $("//a[@class='ant-notification-notice-close']");
+    }
+
     // get selectCountry() {
     //     return $("//div[@data-qa='countries']/span[@class='ant-select-arrow']");  //по селектору не кликает
     // }

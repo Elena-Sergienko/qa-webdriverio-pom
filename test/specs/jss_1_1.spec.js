@@ -6,7 +6,7 @@ import ContentsJSSPage from "../pageobjects/modules/courses/javaScriptSyntax/con
 import Jss_1_1Page from "../pageobjects/modules/courses/javaScriptSyntax/jss_1_1.page"
 
 
-xdescribe('Java Script Syntax', () => {
+describe('Java Script Syntax', () => {
 
 
     before(() => {

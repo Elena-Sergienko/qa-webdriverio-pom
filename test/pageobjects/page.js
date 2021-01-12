@@ -30,7 +30,8 @@ class Page {
     }
 
     get notification() {
-        return $('.ant-notification-notice-message')
+        // return $('.ant-notification-notice-message')
+        return $("//div[@class='ant-notification-notice-message']");
     };
 
     clearInput(inputField) {

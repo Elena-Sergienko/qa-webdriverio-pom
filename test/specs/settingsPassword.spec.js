@@ -4,7 +4,7 @@ import MenuPage from "../pageobjects/menu.page"
 import MainMenu from "../pageobjects/menu.page";
 
 
-xdescribe('TS: SETTINGS PASSWORD', () => {
+describe('TS: SETTINGS PASSWORD', () => {
 
 
     const inpData = {

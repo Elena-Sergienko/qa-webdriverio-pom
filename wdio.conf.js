@@ -24,7 +24,8 @@ exports.config = {
         './test/specs/settingsProfile.spec.js',
         './test/specs/diary.spec.js',
         './test/specs/settingsLinks.spec.js',
-        './test/specs/settingsPassword.spec.js'
+        './test/specs/settingsPassword.spec.js',
+        './test/specs/settingsShipping.spec.js'
     ],
     //
     // ============

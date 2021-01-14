@@ -35,8 +35,13 @@ class Page {
     };
 
     clearInput(inputField) {
-        inputField.keys(['Control', 'a']);
-        inputField.keys(['Backspace']);
+        // inputField.keys(['Control', 'a']);
+        // inputField.keys(['Backspace']);
+
+        const textLength = inputField.getValue().length;
+        for(let i = 0; i < textLength; i++){
+            inputField.keys(['Backspace']);
+        }
     }
 
     edit(selectedIF, newText) {

@@ -18,7 +18,7 @@ xdescribe('TS: SETTINGS EMAIL', () => {
         LoginPage.login(inpData.oldEmail, inpData.password);
     })
 
-    xit('TC: Verify that the Email Update functionality works correctly', () => { // не получается т.к. невозможно подтвердить новый email (в результате входит под старым)
+    it('TC: Verify that the Email Update functionality works correctly', () => { // не получается т.к. невозможно подтвердить новый email (в результате входит под старым)
         MenuPage.goToSettingsEmail();                                                    // ?? как тестировать в таких случаях (когда возможнсоть отправки писем заблокирована)
 
         SettingsEmailPage.inputFieldOldEmail.setValue(inpData.oldEmail);

@@ -5,7 +5,7 @@ import DiaryPage from "../pageobjects/modules/diary/diary.page"
 import ProfilePage from "../pageobjects/profile.page";
 
 
-xdescribe('Diary', () => {
+describe('Diary', () => {
 
     const report = "Day report 2. Day report 2. Day report 2";
 

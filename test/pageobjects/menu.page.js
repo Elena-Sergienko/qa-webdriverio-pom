@@ -46,7 +46,8 @@ class MenuPage extends Page {
     }
 
     get profileDropdown() {
-        return $("//span[@class='anticon anticon-down']");
+        // return $("//span[@class='anticon anticon-down']");
+        return $("//span[@class='anticon anticon-down']/..");
     }
 
     get selectProfile() {

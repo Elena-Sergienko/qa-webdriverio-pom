@@ -1,8 +1,8 @@
-import LoginPage from "../pageobjects/login.page";
-import SettingsProfilePage from "../pageobjects/settings/settingsProfile.page"
-import MenuPage from "../pageobjects/menu.page"
-import DiaryPage from "../pageobjects/modules/diary/diary.page"
-import ProfilePage from "../pageobjects/profile.page";
+import LoginPage from "../../../pageobjects/login.page";
+import SettingsProfilePage from "../../../pageobjects/settings/settingsProfile.page"
+import MenuPage from "../../../pageobjects/menu.page"
+import DiaryPage from "../../../pageobjects/modules/diary/diary.page"
+import ProfilePage from "../../../pageobjects/profile.page";
 
 
 describe('Diary', () => {

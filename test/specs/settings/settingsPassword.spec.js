@@ -1,7 +1,7 @@
-import LoginPage from "../pageobjects/login.page";
-import SettingsPasswordPage from "../pageobjects/settings/settingsPassword.page"
-import MenuPage from "../pageobjects/menu.page"
-import MainMenu from "../pageobjects/menu.page";
+import LoginPage from "../../pageobjects/login.page";
+import SettingsPasswordPage from "../../pageobjects/settings/settingsPassword.page"
+import MenuPage from "../../pageobjects/menu.page"
+import MainMenu from "../../pageobjects/menu.page";
 
 
 describe('TS: SETTINGS PASSWORD', () => {

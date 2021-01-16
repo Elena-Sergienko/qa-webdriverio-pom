@@ -1,8 +1,8 @@
-import LoginPage from "../pageobjects/login.page";
-import ProfilePage from "../pageobjects/profile.page";
-import SettingsProfilePage from "../pageobjects/settings/settingsProfile.page"
-import MenuPage from "../pageobjects/menu.page";
-import AdminUsersPage from "../pageobjects/admin/adminUsers.page";
+import LoginPage from "../../pageobjects/login.page";
+import ProfilePage from "../../pageobjects/profile.page";
+import SettingsProfilePage from "../../pageobjects/settings/settingsProfile.page"
+import MenuPage from "../../pageobjects/menu.page";
+import AdminUsersPage from "../../pageobjects/admin/adminUsers.page";
 
 
 describe('Settings Profile', () => {

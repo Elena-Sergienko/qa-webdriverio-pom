@@ -1,7 +1,7 @@
-import LoginPage from "../pageobjects/login.page";
-import SettingsEmailPage from "../pageobjects/settings/settingsEmail.page";
-import MenuPage from "../pageobjects/menu.page";
-import MainMenu from "../pageobjects/menu.page";
+import LoginPage from "../../pageobjects/login.page";
+import SettingsEmailPage from "../../pageobjects/settings/settingsEmail.page";
+import MenuPage from "../../pageobjects/menu.page";
+import MainMenu from "../../pageobjects/menu.page";
 
 
 xdescribe('TS: SETTINGS EMAIL', () => {

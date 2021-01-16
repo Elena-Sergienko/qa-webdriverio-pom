@@ -28,7 +28,11 @@ describe('TS: SETTINGS SHIPPING ADDRESS', () => {
         LoginPage.login(SettingsProfilePage.credentials[0].username, SettingsProfilePage.credentials[0].password);
     })
     beforeEach(() => {
-        MenuPage.goToSettingsShipping();
+        MenuPage.menuShop.click();
+    })
+
+    it('', () => {
+
     })
 
 

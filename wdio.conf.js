@@ -25,7 +25,8 @@ exports.config = {
         './test/specs/diary.spec.js',
         './test/specs/settingsLinks.spec.js',
         './test/specs/settingsPassword.spec.js',
-        './test/specs/settingsShipping.spec.js'
+        './test/specs/settingsShipping.spec.js',
+        './test/specs/shop.spec.js'
     ],
     //
     // ============

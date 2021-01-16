@@ -3,12 +3,12 @@ module.exports = {
         './test/specs/**/*.js'
     ],
     exclude: [
-        './test/specs/settingsProfile.spec.js',
-        './test/specs/diary.spec.js',
-        './test/specs/settingsLinks.spec.js',
-        './test/specs/settingsPassword.spec.js',
-        './test/specs/settingsShipping.spec.js',
-        './test/specs/shop.spec.js'
+        './test/specs/settings/settingsProfile.spec.js',
+        // './test/specs/modules/diary.spec.js',
+        // './test/specs/settings/settingsLinks.spec.js',
+        // './test/specs/settings/settingsPassword.spec.js',
+        // './test/specs/settings/settingsShipping.spec.js',
+        './test/specs/shop/shop.spec.js'
     ],
     logLevel: 'info',
     bail: 0,

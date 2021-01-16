@@ -1,7 +1,7 @@
-import LoginPage from "../pageobjects/login.page";
-import SettingsProfilePage from "../pageobjects/settings/settingsProfile.page"
-import SettingsShippingPage from "../pageobjects/settings/settingsShipping.page"
-import MenuPage from "../pageobjects/menu.page";
+import LoginPage from "../../pageobjects/login.page";
+import SettingsProfilePage from "../../pageobjects/settings/settingsProfile.page"
+import SettingsShippingPage from "../../pageobjects/settings/settingsShipping.page"
+import MenuPage from "../../pageobjects/menu.page";
 
 
 describe('TS: SETTINGS SHIPPING ADDRESS', () => {

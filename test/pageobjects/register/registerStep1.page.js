@@ -35,6 +35,35 @@ class RegisterStep1Page extends Page {
         return $("//a[.='Log in']");
     }
 
+    openRegister() {
+        browser.url('/user/register');
+    }
+
+    setFirstName(firstName) {
+        this.inputFieldFirstName.setValue(firstName);
+    }
+
+    setLastLast(lastName) {
+        this.inputFieldLastName.setValue(lastName);
+    }
+
+    setEmail(email) {
+        this.inputFieldEmail.setValue(email);
+    }
+
+    setPassword(password) {
+        this.inputFieldPassword.setValue(password);
+    }
+
+    createUser(firstName, lastName, email, password){
+        this.inputFieldFirstName.setValue(firstName);
+        this.inputFieldLastName.setValue(lastName);
+        this.inputFieldEmail.setValue(email);
+        this.inputFieldPassword.setValue(password);
+        this.checkBoxIHaveRead.click();
+        this.registerBtn.click();
+    }
+
 }
 
 export default new RegisterStep1Page();

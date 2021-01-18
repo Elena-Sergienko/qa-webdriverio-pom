@@ -32,6 +32,10 @@ class LoginPage extends Page {
         return $("//div[@class='ant-col ant-form-item-control' and div//input[@id='normal_login_password']]//div[@role='alert']");
     }
 
+    get createOneLink() {
+        return $("//a[.='Create one']");
+    }
+
 
     setUsername(username) {
         this.inputUsername.setValue(username);
@@ -55,7 +59,6 @@ class LoginPage extends Page {
         this.setPassword(password);
         this.clickSubmit();
         MenuPage.topMenu.waitForExist();
-
     }
 
     openLoginPage() {

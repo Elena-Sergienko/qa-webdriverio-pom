@@ -6,6 +6,9 @@ import MenuPage from "../pageobjects/menu.page";
 import AdminUsersPage from "../pageobjects/admin/adminUsers.page";
 import SettingsProfilePage from "../pageobjects/settings/settingsProfile.page";
 import DeleteUserPage from "../pageobjects/admin/deleteUser.page";
+import userSearchByEmail from "../../api/userSearchByEmail";
+import userDeleteByEmail from "../../api/userDeleteByEmail";
+const axios = require('axios');
 
 
 describe('TS: REGISTER', () => {
@@ -27,6 +30,8 @@ describe('TS: REGISTER', () => {
         LoginPage.createOneLink.click();
         expect(RegisterStep1Page.header).toHaveText("Create an account")
         RegisterStep1Page.createUser(inpData.firstName, inpData.lastName, inpData.email, inpData.password)
+
+        expect(browser).toHaveUrl('https://stage.localcoding.us/user/register-step2');
 
         // RegisterStep2Page.skipBtn.click(); // можно и пропустить 2 шаг
         RegisterStep2Page.inputFieldPhone.setValue('1111111111');
@@ -55,7 +60,18 @@ describe('TS: REGISTER', () => {
         expect(AdminUsersPage.role).toHaveText("new");
     })
 
-    it('Delete new user', () =>{
+    // it('Should verify that new user exist', async () => {
+    //     const response = await userSearchByEmail(inpData.email);
+    //     const newUserEmail = response.items[0].email;
+    //     expect(newUserEmail).toEqual(inpData.email);
+    // });
+
+    // it('should delete the new user', async () => {
+    //     const response = await userDeleteByEmail(inpData.email);
+    //     expect(response.success).toEqual(true);
+    // });
+    //
+    it('Delete new user', () => {
         AdminUsersPage.dropdownMenuLastUser.click();
         AdminUsersPage.deleteUser.click();
         // expect(DeleteUserPage.titleUserDelete).toHaveText("User Delete") //когда уберут баг - сообщение об ошибке в admin->users
@@ -64,4 +80,5 @@ describe('TS: REGISTER', () => {
         AdminUsersPage.inputFieldEmail.scrollIntoView();
         expect(AdminUsersPage.lastUserInformation).not.toBeDisplayed();
     })
+
 })

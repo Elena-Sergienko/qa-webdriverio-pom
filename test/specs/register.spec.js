@@ -65,12 +65,12 @@ describe('TS: REGISTER', () => {
     //     const newUserEmail = response.items[0].email;
     //     expect(newUserEmail).toEqual(inpData.email);
     // });
-
+    //
     // it('should delete the new user', async () => {
     //     const response = await userDeleteByEmail(inpData.email);
     //     expect(response.success).toEqual(true);
     // });
-    //
+
     it('Delete new user', () => {
         AdminUsersPage.dropdownMenuLastUser.click();
         AdminUsersPage.deleteUser.click();

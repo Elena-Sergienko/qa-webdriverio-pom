@@ -1,4 +1,4 @@
-import axios from "axios";
+const axios = require('axios');
 
 export default function userSearchByEmail(userEmail){
     return axios({
@@ -8,8 +8,8 @@ export default function userSearchByEmail(userEmail){
             email: `${userEmail}`
         },
         headers: {
-            Authorization: process.env.ADMON_TOKEN
+            Authorization: process.env.ADMIN_TOKEN
         },
     }).then(res => res.data)
-        .catch(err => console.log(err.response.data))
+      .catch(err => console.log(err.response.data))
 }

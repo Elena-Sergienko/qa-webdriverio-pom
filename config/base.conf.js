@@ -4,10 +4,10 @@ module.exports = {
     ],
     exclude: [
         './test/specs/settings/settingsProfile.spec.js',
-        // './test/specs/modules/diary.spec.js',
+        './test/specs/modules/diary/diary.spec.js',
         // './test/specs/settings/settingsLinks.spec.js',
         // './test/specs/settings/settingsPassword.spec.js',
-        // './test/specs/settings/settingsShipping.spec.js',
+        './test/specs/register.spec.js',
         './test/specs/shop/shop.spec.js'
     ],
     logLevel: 'info',

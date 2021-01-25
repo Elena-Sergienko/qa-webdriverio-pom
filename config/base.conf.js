@@ -8,7 +8,7 @@ module.exports = {
         // './test/specs/settings/settingsLinks.spec.js',
         // './test/specs/settings/settingsPassword.spec.js',
         './test/specs/register.spec.js',
-        './test/specs/shop/shop.spec.js'
+        // './test/specs/shop/shop.spec.js'
     ],
     logLevel: 'info',
     bail: 0,

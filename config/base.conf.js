@@ -3,8 +3,8 @@ module.exports = {
         './test/specs/**/*.js'
     ],
     exclude: [
-        './test/specs/settings/settingsProfile.spec.js',
-        './test/specs/modules/diary/diary.spec.js',
+        // './test/specs/settings/settingsProfile.spec.js',
+        // './test/specs/modules/diary/diary.spec.js',
         // './test/specs/settings/settingsLinks.spec.js',
         // './test/specs/settings/settingsPassword.spec.js',
         './test/specs/register.spec.js',

@@ -17,6 +17,10 @@ describe('TS: SETTINGS SHIPPING ADDRESS', () => {
         fullName: "Anna Ivanova",
         streetAddress: "5420 NE 28 Street, Apt. 298z",
         city: "Redmond",
+        country: {
+            poland: "Poland",
+            russia: "Russia"
+        },
         postalCode: "981067",
         contactPhone: "123456789"
     }
@@ -25,7 +29,10 @@ describe('TS: SETTINGS SHIPPING ADDRESS', () => {
         fullName: "Anna Ivanova",
         streetAddress: "5420 NE 28 Street, Apt. 298z",
         city: "Redmond",
-        country: "Poland",
+        country: {
+            poland: "Poland",
+            russia: "Russia"
+        },
         stateProvince: "",
         postalCode: "981067",
         contactPhone: "123456789",
@@ -44,16 +51,26 @@ describe('TS: SETTINGS SHIPPING ADDRESS', () => {
         expect(SettingsShippingPage.inputFieldFullName).toHaveValue(expData.fullName);
     })
 
-    it('TC: Verify that the input field [Country] accepts text (updated country) and after clicking Save Btn, the country is saved', () => {
-        SettingsShippingPage.dropDownCountry.click();
-        SettingsShippingPage.selectPoland.click();
+    it('TC: Verify that the user can select the country (updated country) and after clicking Save Btn, the country is saved', () => {
+        let selectedCountry = SettingsShippingPage.dropDownCountry.getText();
+        let newCountry;
+        let expNewCountry;
+        if (selectedCountry === inpData.country.poland) {
+            newCountry = inpData.country.russia;
+            expNewCountry = expData.country.russia;
+        } else {
+            newCountry = inpData.country.poland;
+            expNewCountry = expData.country.poland;
+        }
+
+        SettingsProfilePage.scrollDownCountry(SettingsShippingPage.dropDownCountry, newCountry)
         SettingsShippingPage.saveAddressBtn.click();
 
         MenuPage.goToLogout();
         LoginPage.login(SettingsProfilePage.credentials[0].username, SettingsProfilePage.credentials[0].password);
         MenuPage.goToSettingsShipping();
 
-        expect(SettingsShippingPage.dropDownCountry).toHaveText(expData.country);
+        expect(SettingsShippingPage.dropDownCountry).toHaveText(expNewCountry);
     })
 
     it('TC: Verify that the input field [Street Address] accepts text (updated street address) and after clicking Save Btn, the street address is saved', () => {

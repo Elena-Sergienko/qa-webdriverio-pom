@@ -12,7 +12,8 @@ describe('Settings Profile', () => {
         lastName: "A",
         phone: "11111111111",
         about: "About me",
-        goal: "My goal - QA engineer"
+        goal: "My goal - QA engineer",
+        iceland: "Iceland"
     }
 
     const expData = {
@@ -23,7 +24,8 @@ describe('Settings Profile', () => {
         goal: "My goal - QA engineer",
         country: "",
         english: "Advanced",
-        size: "Women - XS"
+        size: "Women - XS",
+        iceland: "Iceland"
     }
 
 
@@ -148,4 +150,8 @@ describe('Settings Profile', () => {
         expect(ProfilePage.userName).toHaveText(expData.firstName + ' ' + expData.lastName);
     })
 
+    it('TC-5.055(2) select country (Iceland)', () => {
+        SettingsProfilePage.scrollDownCountry(SettingsProfilePage.inputFieldCountry, inpData.iceland);
+        expect(SettingsProfilePage.inputFieldCountry).toHaveText(expData.iceland);
+    });
 })

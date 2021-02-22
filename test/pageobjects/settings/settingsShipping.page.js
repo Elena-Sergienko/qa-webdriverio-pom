@@ -42,6 +42,10 @@ class SettingsShippingPage extends Page {
         return $("//input[@id='contactPhone']");
     }
 
+    get prefixPhone(){
+        return $("//span[@class='ant-input-prefix']");
+    }
+
     get errorMessage() {
         return $("//div[@role='alert']");
     }

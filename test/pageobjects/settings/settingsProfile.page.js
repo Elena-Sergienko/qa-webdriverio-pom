@@ -93,6 +93,29 @@ class SettingsProfilePage extends Page {
     get linkDeactivateAccount() {
         return $("//li[@data-qa='deactivateAccount']");
     }
+
+    get activeCountry() {
+        return $("//div[@class='ant-select-item ant-select-item-option ant-select-item-option-active']") // селектор (динамический) который появляется когда на страну навели стрелкой
+    }
+
+    get selectedCountry() {
+        return $("//div[@class='ant-select-item ant-select-item-option ant-select-item-option-active ant-select-item-option-selected']") // селектор выбранной страны
+    }
+
+    scrollDownCountry(elem, text) {
+        elem.click();
+        let valueOfCountry;
+        let iteration = true;
+        do {
+            browser.keys(['ArrowUp']);
+            valueOfCountry = this.activeCountry.getAttribute("title");
+            if (valueOfCountry === text) {
+                browser.keys(['Enter']);
+                iteration = false
+            }
+        } while (iteration);
+    }
+
 }
 
 export default new SettingsProfilePage();

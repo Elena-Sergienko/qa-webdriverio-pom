@@ -13,7 +13,9 @@ describe('Settings Profile', () => {
         phone: "11111111111",
         about: "About me",
         goal: "My goal - QA engineer",
-        iceland: "Iceland"
+        iceland: "Iceland",
+        us: "United States",
+        ukraine: "Ukraine"
     }
 
     const expData = {
@@ -22,10 +24,12 @@ describe('Settings Profile', () => {
         phone: "11111111111",
         about: "About me",
         goal: "My goal - QA engineer",
-        country: "",
+        checkNewCountry: "",
         english: "Advanced",
         size: "Women - XS",
-        iceland: "Iceland"
+        iceland: "Iceland",
+        us: "United States",
+        ukraine: "Ukraine"
     }
 
 
@@ -38,7 +42,7 @@ describe('Settings Profile', () => {
     })
 
     afterEach(() => {
-        if(SettingsProfilePage.notification.isDisplayed()){  // убрать когда починят ошибку на admin-users
+        if (SettingsProfilePage.notification.isDisplayed()) {  // убрать когда починят ошибку на admin-users
             SettingsProfilePage.closeErrorMessage.click();
         }
     })
@@ -100,21 +104,26 @@ describe('Settings Profile', () => {
         expect(ProfilePage.goalsSection).toHaveText(expData.goal);
     })
 
-    xit('TC: Verify that the user can change the Country of residence', () => { // баг? не сохраняет новую страну
-        SettingsProfilePage.inputFieldCountry.click();
-        // SettingsProfilePage.countryAzerbaijan.scrollIntoView(); // ?? scroll не работает так. Как скролить
-        // SettingsProfilePage.countryAzerbaijan.click();
-
-        // SettingsProfilePage.countryRussia.click();
-        browser.keys(['ArrowDown'.repeat(3), 'Enter']);
+    it('TC: Verify that the user can change the Country of residence', () => { // баг - не сохраняет некоторые страны
+        let selectedCountry = SettingsProfilePage.inputFieldCountry.getText();
+        let newCountry;
+        if (selectedCountry === inpData.ukraine) {
+            SettingsProfilePage.scrollDownCountry(SettingsProfilePage.inputFieldCountry, inpData.us)
+            newCountry = inpData.us;
+        } else {
+            SettingsProfilePage.scrollDownCountry(SettingsProfilePage.inputFieldCountry, inpData.ukraine)
+            newCountry = inpData.ukraine;
+        }
 
         SettingsProfilePage.saveBtn.click();
-        expData.country = SettingsProfilePage.inputFieldCountry.getText();
+        expData.checkNewCountry = SettingsProfilePage.inputFieldCountry.getText();
+        expect(newCountry).toEqual(expData.checkNewCountry);
+
         MenuPage.goToAdminUsers();
         AdminUsersPage.inputFieldEmail.setValue(SettingsProfilePage.credentials[0].username);
         AdminUsersPage.email.waitForDisplayed();
         AdminUsersPage.country.scrollIntoView();
-        expect(AdminUsersPage.country).toHaveTextContaining(expData.country);
+        expect(AdminUsersPage.country).toHaveTextContaining(newCountry);
     })
 
     it('TC: Verify that the user can change the information about the level of English proficiency', () => {

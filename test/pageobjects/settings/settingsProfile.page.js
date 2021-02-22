@@ -104,28 +104,14 @@ class SettingsProfilePage extends Page {
 
     scrollDownCountry(elem, text) {
         elem.click();
-
-        let valueOfCountry; // в этой переменной будет записываться значение атрибута title каждого селектора (согласно той стране, на которую наведена стрелка)
-        let arr = [];       // для наглядности создаю массив всех значений, которые пробегает стрелка до того как найдет нужную нам страну
-
-        let iteration = true; // данная переменная для цикла 'do while' - пока true - итерации осуществляются, false - прекращается цикл
+        let valueOfCountry;
+        let iteration = true;
         do {
             browser.keys(['ArrowUp']);
-            // this.activeCountry.waitForExist(); // если нужно, ждем пока динамический селектор появится
-            valueOfCountry = this.activeCountry.getAttribute("title"); // отслеживание по атрибуту именно активного селектора, (а активным селектор становиться только когда на него наводят стрелкой
-
-
-            console.log("--------------------------debug mode-------------------------")
-            arr.push(valueOfCountry); // каждую страну, которую проходим, пушим в массив, чтобы видеть в консоли весь массив предыдущих значений и последнее в массиве должно быть наше(text)
-            console.log(valueOfCountry)
-            console.log(arr)
-            console.log(`Our country: ${arr[arr.length - 1]}`)
-            console.log("-------------------------------------------------------------")
-
-
+            valueOfCountry = this.activeCountry.getAttribute("title");
             if (valueOfCountry === text) {
-                browser.keys(['Enter']);  // если находит нашу страну (text), то нажимается Enter - чтобы выбрать именно ее
-                iteration = false              // останавливаем цикл
+                browser.keys(['Enter']);
+                iteration = false
             }
         } while (iteration);
     }

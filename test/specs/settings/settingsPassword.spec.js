@@ -21,7 +21,6 @@ describe('TS: SETTINGS PASSWORD', () => {
 
 
     before(() => {
-        browser.maximizeWindow();
         LoginPage.login(inpData.email, inpData.oldPassword);
     })
 

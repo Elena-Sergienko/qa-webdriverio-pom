@@ -7,7 +7,6 @@ import MenuPage from "../../pageobjects/menu.page"
 
 describe('Settings Links', () => {
     before(() => {
-        browser.maximizeWindow();
         LoginPage.login(SettingsProfilePage.credentials[0].username, SettingsProfilePage.credentials[0].password);
     })
     const inpData = {

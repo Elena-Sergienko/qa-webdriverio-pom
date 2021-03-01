@@ -18,7 +18,6 @@ describe('USER REGISTRATION', () => {
 
     before(() => {
         LoginPage.openLoginPage();
-        browser.maximizeWindow();
         LoginPage.createOneLink.click();
     });
 

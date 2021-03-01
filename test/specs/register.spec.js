@@ -23,7 +23,6 @@ describe('TS: REGISTER', () => {
 
     before(() => {
         LoginPage.openLoginPage();
-        browser.maximizeWindow();
     })
 
     it('Register New user', () => {

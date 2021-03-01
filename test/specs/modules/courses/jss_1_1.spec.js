@@ -10,7 +10,6 @@ describe('Java Script Syntax', () => {
 
 
     before(() => {
-        browser.maximizeWindow();
         LoginPage.login(SettingsProfilePage.credentials[3].username, SettingsProfilePage.credentials[3].password);
     })
 

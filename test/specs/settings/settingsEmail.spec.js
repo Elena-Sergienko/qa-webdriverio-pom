@@ -14,7 +14,6 @@ xdescribe('TS: SETTINGS EMAIL', () => {
     }
 
     before(() => {
-        browser.maximizeWindow();
         LoginPage.login(inpData.oldEmail, inpData.password);
     })
 

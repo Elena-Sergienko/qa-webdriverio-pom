@@ -15,7 +15,6 @@ describe('URL Settings', () => {
     describe('Admin', () => {
 
         before(() => {
-            browser.maximizeWindow();
             LoginPage.login(SettingsProfilePage.credentials[0].username, SettingsProfilePage.credentials[0].password);
             MenuPage.goToSettingsProfile();
             urlUI = browser.getUrl();
@@ -74,8 +73,10 @@ describe('URL Settings', () => {
     describe('New', () => {
 
         before(() => {
-            browser.maximizeWindow();
             LoginPage.login(SettingsProfilePage.credentials[1].username, SettingsProfilePage.credentials[1].password);
+            if (SettingsProfilePage.notification.isDisplayed()) {  // убрать когда починят ошибку
+                SettingsProfilePage.closeErrorMessage.click();
+            }
             MenuPage.goToSettingsProfile();
             urlUI = browser.getUrl();
         })

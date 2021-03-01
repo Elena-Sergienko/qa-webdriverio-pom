@@ -28,6 +28,7 @@ class SettingsProfilePage extends Page {
     }
 
     get closeErrorMessage() {
+        // return $("//div[@class='ant-notification-notice ant-notification-notice-closable']");
         return $("//a[@class='ant-notification-notice-close']");
     }
 
@@ -118,6 +119,7 @@ class SettingsProfilePage extends Page {
     }
 
     urlConstructor(id, tab){
+        // const urlSettings = browser.url('/settings');
         const urlSettings = "https://stage.localcoding.us/settings";
         return `${urlSettings}/${id}/${tab}`;
     }

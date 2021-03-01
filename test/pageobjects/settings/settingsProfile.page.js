@@ -1,4 +1,5 @@
 import Page from '../page';
+import {userLogin} from "../../../api/userLogin";
 
 class SettingsProfilePage extends Page {
 
@@ -114,6 +115,14 @@ class SettingsProfilePage extends Page {
                 iteration = false
             }
         } while (iteration);
+    }
+
+    urlConstructor(email, password){
+        let userID = userLogin(email, password);
+        console.log("------------------------------------------------------")
+        console.log(userID)
+        console.log("------------------------------------------------------")
+        return `https://stage.localcoding.us/settings/${userID}/profile`;
     }
 
 }

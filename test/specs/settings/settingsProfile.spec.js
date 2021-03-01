@@ -159,7 +159,7 @@ describe('Settings Profile', () => {
         expect(ProfilePage.userName).toHaveText(expData.firstName + ' ' + expData.lastName);
     })
 
-    it('TC-5.055(2) select country (Iceland)', () => {
+    it.only('TC-5.055(2) select country (Iceland)', () => {
         SettingsProfilePage.scrollDownCountry(SettingsProfilePage.inputFieldCountry, inpData.iceland);
         expect(SettingsProfilePage.inputFieldCountry).toHaveText(expData.iceland);
     });

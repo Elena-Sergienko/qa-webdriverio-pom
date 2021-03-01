@@ -1,4 +1,5 @@
 import Page from '../page';
+import {userLogin} from "../../../api/userLogin";
 
 class SettingsProfilePage extends Page {
 
@@ -114,6 +115,11 @@ class SettingsProfilePage extends Page {
                 iteration = false
             }
         } while (iteration);
+    }
+
+    urlConstructor(id, tab){
+        const urlSettings = "https://stage.localcoding.us/settings";
+        return `${urlSettings}/${id}/${tab}`;
     }
 
 }

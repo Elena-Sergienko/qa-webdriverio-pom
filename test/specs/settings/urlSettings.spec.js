@@ -3,7 +3,7 @@ import ProfilePage from "../../pageobjects/profile.page";
 import SettingsProfilePage from "../../pageobjects/settings/settingsProfile.page"
 import MenuPage from "../../pageobjects/menu.page";
 import AdminUsersPage from "../../pageobjects/admin/adminUsers.page";
-import {userLogin} from "../../../api/userLogin";
+import userLogin from "../../../api/userLogin";
 
 
 const axios = require('axios');
@@ -26,14 +26,14 @@ describe('URL Settings', () => {
     // })
 
 
-    it.only('Adm URL', async () => {
-        expect(urlUI).toEqual(SettingsProfilePage.urlConstructor("admin@gmail.com", "111111", "profile"));
-    })
-
     // it.only('Adm URL', async () => {
-    //     let result = await userLogin("admin@gmail.com", "111111");
-    //     expect(urlUI).toEqual(`https://stage.localcoding.us/settings/${result.user._id}/profile`);
-    // })
+    //     expect(urlUI).toEqual(SettingsProfilePage.urlConstructor("admin@gmail.com", "111111", "profile"));
+    // }) // No
+
+    it.only('Adm URL', async () => {
+        let id = (await userLogin("admin@gmail.com", "111111")).user._id;
+        expect(urlUI).toEqual(`https://stage.localcoding.us/settings/${id}/profile`);
+    })
 
     // it.only('Adm URL', async () => {
     //     const result = await axios({

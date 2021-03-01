@@ -118,7 +118,7 @@ class SettingsProfilePage extends Page {
     }
 
     urlConstructor(email, password, tab){
-        let getId = async (email, password) => {
+        let responseLogin = async (email, password) => {
             // let userID = userLogin(email, password);
             // console.log("------------------------------------------------------")
             // console.log(userID)
@@ -127,7 +127,7 @@ class SettingsProfilePage extends Page {
 
             let result = await userLogin(email, password);
         }
-        return `https://stage.localcoding.us/settings/${result.user._id}/${tab}`;
+        return `https://stage.localcoding.us/settings/${responseLogin(email, password)}/${tab}`;
 
     }
 

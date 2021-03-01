@@ -117,12 +117,18 @@ class SettingsProfilePage extends Page {
         } while (iteration);
     }
 
-    urlConstructor(email, password){
-        let userID = userLogin(email, password);
-        console.log("------------------------------------------------------")
-        console.log(userID)
-        console.log("------------------------------------------------------")
-        return `https://stage.localcoding.us/settings/${userID}/profile`;
+    urlConstructor(email, password, tab){
+        let getId = async (email, password) => {
+            // let userID = userLogin(email, password);
+            // console.log("------------------------------------------------------")
+            // console.log(userID)
+            // console.log("------------------------------------------------------")
+            // return `https://stage.localcoding.us/settings/${userID}/profile`;
+
+            let result = await userLogin(email, password);
+        }
+        return `https://stage.localcoding.us/settings/${result.user._id}/${tab}`;
+
     }
 
 }

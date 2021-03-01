@@ -1,10 +1,18 @@
 import LoginPage from "../../pageobjects/login.page";
+import ProfilePage from "../../pageobjects/profile.page";
 import SettingsProfilePage from "../../pageobjects/settings/settingsProfile.page"
 import SettingsShippingPage from "../../pageobjects/settings/settingsShipping.page"
 import MenuPage from "../../pageobjects/menu.page";
+import faker from 'faker';
+import userRegister from "../../../api/userRegister";
+import userLogin from "../../../api/userLogin";
+
 
 
 describe('TS: SETTINGS SHIPPING ADDRESS', () => {
+
+    let userId;
+    let userRole;
 
     const visa = {
         email: "new@qa6.us",
@@ -23,16 +31,82 @@ describe('TS: SETTINGS SHIPPING ADDRESS', () => {
         zip: "30096"
     }
 
-    before(() => {
-        LoginPage.login(SettingsProfilePage.credentials[0].username, SettingsProfilePage.credentials[0].password);
-    })
-    beforeEach(() => {
-        MenuPage.menuShop.click();
+    let user = {
+        firstName: faker.name.firstName(),
+        lastName: faker.name.lastName(),
+        email: faker.internet.email(),
+        password: faker.internet.password(),
+        phone: '11111111111'
+    }
+
+
+    // before(async () => {
+    //     await userRegister("shop34@gmail.com", "111111", user.firstName, user.lastName);
+    //
+    //
+    //     //register              API
+    //     //confirm email         API
+    //     //check status learner  UI
+    //     //buy course            UI
+    //     //check status student  UI
+    //     //delete user           API
+    // })
+
+    // after(() => {
+    //     //delete
+    // })
+    // beforeEach(() => {
+    // })
+
+    // it('Verify the user created and role - new', () => {
+    //     LoginPage.login('shop34@gmail.com', '111111');
+    //     expect(ProfilePage.role).toHaveText("new")
+    //
+    //
+    // })
+
+    it.only('Verify the user created and role - new', async () => {
+        userId = (await userLogin('shop34@gmail.com', '111111')).user._id;
+        userRole = (await userLogin('shop34@gmail.com', '111111')).user.roles[0]; // как получить оба  и id, и role за 1 логин
+
+        // LoginPage.login('shop34@gmail.com', '111111');
+        // expect(ProfilePage.role).toHaveText(userRole)
+
+        console.log("44444444444444444444444444444444444444444444444444444444444444444444444444")
+        console.log(userId)
+        console.log(userRole)
+        console.log("44444444444444444444444444444444444444444444444444444444444444444444444444")
+
     })
 
-    it('', () => {
+    it('Get User Id', async () => {
+        userId = (await userLogin('shop34@gmail.com', '111111')).user._id;
+    })
+
+    it('Confirm Email', async () => {
 
     })
 
+    it('Verify that role - learner', () => {
+
+    })
+
+    it('Buy course', () => {
+        // MenuPage.menuShop.click();
+
+    })
+
+    it('Verify - course is available', async () => {
+
+    })
+
+
+    it('Verify role - student',  () => {
+
+    })
+
+    it('Delete user', async () => {
+
+    })
 
 })

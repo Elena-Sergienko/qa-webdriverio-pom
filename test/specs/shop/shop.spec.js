@@ -12,6 +12,7 @@ import userLogin from "../../../api/userLogin";
 describe('TS: SETTINGS SHIPPING ADDRESS', () => {
 
     let userId;
+    let userToken;
     let userRole;
 
     const visa = {
@@ -67,6 +68,7 @@ describe('TS: SETTINGS SHIPPING ADDRESS', () => {
 
     it.only('Verify the user created and role - new', async () => {
         userId = (await userLogin('shop34@gmail.com', '111111')).user._id;
+        userToken = (await userLogin('shop34@gmail.com', '111111')).token;
         userRole = (await userLogin('shop34@gmail.com', '111111')).user.roles[0]; // как получить оба  и id, и role за 1 логин
 
         // LoginPage.login('shop34@gmail.com', '111111');
@@ -74,6 +76,7 @@ describe('TS: SETTINGS SHIPPING ADDRESS', () => {
 
         console.log("44444444444444444444444444444444444444444444444444444444444444444444444444")
         console.log(userId)
+        console.log(userToken)
         console.log(userRole)
         console.log("44444444444444444444444444444444444444444444444444444444444444444444444444")
 

@@ -124,6 +124,8 @@ class SettingsProfilePage extends Page {
         return `${urlSettings}/${id}/${tab}`;
     }
 
+
+
 }
 
 export default new SettingsProfilePage();

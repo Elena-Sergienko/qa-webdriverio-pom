@@ -6,12 +6,14 @@ import SettingsLinksPage from "../../pageobjects/settings/settingsLinks.page"
 import SettingsShippingPage from "../../pageobjects/settings/settingsShipping.page"
 import MenuPage from "../../pageobjects/menu.page";
 import userLogin from "../../../api/userLogin";
+import getUserId from "../../../utils/getId";
 
 
 describe('URL Settings', () => {
     let urlUI;
 
     describe('Admin user', () => {
+        let adminId;
 
         before(() => {
             LoginPage.login(SettingsProfilePage.credentials[0].username, SettingsProfilePage.credentials[0].password);
@@ -20,8 +22,8 @@ describe('URL Settings', () => {
         })
 
         it('Verify the url for the Profile Settings page (Admin)', async () => {
-            let id = (await userLogin("admin@gmail.com", "111111")).user._id;
-            expect(urlUI).toEqual(SettingsProfilePage.urlConstructor(id, "profile"));
+            adminId = await getUserId("admin@gmail.com", "111111");
+            expect(urlUI).toEqual(SettingsProfilePage.urlConstructor(adminId, "profile"));
         })
 
         it("Go to Password tab", () => {
@@ -31,8 +33,8 @@ describe('URL Settings', () => {
         })
 
         it('Verify the url for the Password Settings page (Admin)', async () => {
-            let id = (await userLogin(SettingsProfilePage.credentials[0].username, SettingsProfilePage.credentials[0].password)).user._id;
-            expect(urlUI).toEqual(SettingsProfilePage.urlConstructor(id, "password"));
+            // let id = (await userLogin(SettingsProfilePage.credentials[0].username, SettingsProfilePage.credentials[0].password)).user._id;
+            expect(urlUI).toEqual(SettingsProfilePage.urlConstructor(adminId, "password"));
         })
 
         it("Go to Email Tab", () => {

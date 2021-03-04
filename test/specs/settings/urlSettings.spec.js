@@ -5,7 +5,6 @@ import SettingsPasswordPage from "../../pageobjects/settings/settingsPassword.pa
 import SettingsLinksPage from "../../pageobjects/settings/settingsLinks.page"
 import SettingsShippingPage from "../../pageobjects/settings/settingsShipping.page"
 import MenuPage from "../../pageobjects/menu.page";
-import userLogin from "../../../api/userLogin";
 import getUserId from "../../../utils/getId";
 
 
@@ -22,7 +21,7 @@ describe('URL Settings', () => {
         })
 
         it('Verify the url for the Profile Settings page (Admin)', async () => {
-            adminId = await getUserId("admin@gmail.com", "111111");
+            adminId = await getUserId(SettingsProfilePage.credentials[0].username, SettingsProfilePage.credentials[0].password);
             expect(urlUI).toEqual(SettingsProfilePage.urlConstructor(adminId, "profile"));
         })
 
@@ -32,8 +31,7 @@ describe('URL Settings', () => {
             urlUI = browser.getUrl();
         })
 
-        it('Verify the url for the Password Settings page (Admin)', async () => {
-            // let id = (await userLogin(SettingsProfilePage.credentials[0].username, SettingsProfilePage.credentials[0].password)).user._id;
+        it('Verify the url for the Password Settings page (Admin)', () => {
             expect(urlUI).toEqual(SettingsProfilePage.urlConstructor(adminId, "password"));
         })
 
@@ -43,9 +41,8 @@ describe('URL Settings', () => {
             urlUI = browser.getUrl();
         })
 
-        it('Verify the url for the Email Settings page (Admin)', async () => {
-            let id = (await userLogin(SettingsProfilePage.credentials[0].username, SettingsProfilePage.credentials[0].password)).user._id;
-            expect(urlUI).toEqual(SettingsProfilePage.urlConstructor(id, "email"));
+        it('Verify the url for the Email Settings page (Admin)', () => {
+            expect(urlUI).toEqual(SettingsProfilePage.urlConstructor(adminId, "email"));
         })
 
         it("Go to Links Tab", () => {
@@ -54,9 +51,8 @@ describe('URL Settings', () => {
             urlUI = browser.getUrl();
         })
 
-        it('Verify the url for the Links Settings page (Admin)', async () => {
-            let id = (await userLogin(SettingsProfilePage.credentials[0].username, SettingsProfilePage.credentials[0].password)).user._id;
-            expect(urlUI).toEqual(SettingsProfilePage.urlConstructor(id, "links"));
+        it('Verify the url for the Links Settings page (Admin)', () => {
+            expect(urlUI).toEqual(SettingsProfilePage.urlConstructor(adminId, "links"));
         })
 
         it("Go to Shipping Tab", () => {
@@ -65,27 +61,32 @@ describe('URL Settings', () => {
             urlUI = browser.getUrl();
         })
 
-        it('Verify the url for the Shipping Settings page (Admin)', async () => {
-            let id = (await userLogin(SettingsProfilePage.credentials[0].username, SettingsProfilePage.credentials[0].password)).user._id;
-            expect(urlUI).toEqual(SettingsProfilePage.urlConstructor(id, "delivery"));
+        it('Verify the url for the Shipping Settings page (Admin)', () => {
+            expect(urlUI).toEqual(SettingsProfilePage.urlConstructor(adminId, "delivery"));
+        })
+
+        after(() => {
+            MenuPage.goToLogout();
         })
     })
 
     describe('New user', () => {
+        let newId;
 
         before(() => {
             LoginPage.login(SettingsProfilePage.credentials[1].username, SettingsProfilePage.credentials[1].password);
 
-            SettingsProfilePage.notification.waitForDisplayed();    // убрать когда починят ошибку
-            SettingsProfilePage.closeErrorMessage.click();          // убрать когда починят ошибку
-            MenuPage.goToSettingsProfile();
+            // SettingsProfilePage.notification.waitForDisplayed();    // убрать когда починят ошибку
+            // SettingsProfilePage.closeErrorMessage.click();          // убрать когда починят ошибку
+            // MenuPage.profileDropdown.waitForDisplayed();            // убрать когда починят ошибку
 
+            MenuPage.goToSettingsProfile();
             urlUI = browser.getUrl();
         })
 
         it('Verify the url for the Profile Settings page (New)', async () => {
-            let id = (await userLogin(SettingsProfilePage.credentials[1].username, SettingsProfilePage.credentials[1].password)).user._id;
-            expect(urlUI).toEqual(SettingsProfilePage.urlConstructor(id, "profile"));
+            newId = await getUserId(SettingsProfilePage.credentials[1].username, SettingsProfilePage.credentials[1].password);
+            expect(urlUI).toEqual(SettingsProfilePage.urlConstructor(newId, "profile"));
         })
 
         it("Go to Password tab", () => {
@@ -94,9 +95,8 @@ describe('URL Settings', () => {
             urlUI = browser.getUrl();
         })
 
-        it('Verify the url for the Password Settings page (New)', async () => {
-            let id = (await userLogin(SettingsProfilePage.credentials[1].username, SettingsProfilePage.credentials[1].password)).user._id;
-            expect(urlUI).toEqual(SettingsProfilePage.urlConstructor(id, "password"));
+        it('Verify the url for the Password Settings page (New)', () => {
+            expect(urlUI).toEqual(SettingsProfilePage.urlConstructor(newId, "password"));
         })
 
         it("Go to Email Tab", () => {
@@ -105,9 +105,8 @@ describe('URL Settings', () => {
             urlUI = browser.getUrl();
         })
 
-        it('Verify the url for the Email Settings page (New)', async () => {
-            let id = (await userLogin(SettingsProfilePage.credentials[1].username, SettingsProfilePage.credentials[1].password)).user._id;
-            expect(urlUI).toEqual(SettingsProfilePage.urlConstructor(id, "email"));
+        it('Verify the url for the Email Settings page (New)', () => {
+            expect(urlUI).toEqual(SettingsProfilePage.urlConstructor(newId, "email"));
         })
 
         it("Go to Links Tab", () => {
@@ -116,9 +115,8 @@ describe('URL Settings', () => {
             urlUI = browser.getUrl();
         })
 
-        it('Verify the url for the Links Settings page (New)', async () => {
-            let id = (await userLogin(SettingsProfilePage.credentials[1].username, SettingsProfilePage.credentials[1].password)).user._id;
-            expect(urlUI).toEqual(SettingsProfilePage.urlConstructor(id, "links"));
+        it('Verify the url for the Links Settings page (New)', () => {
+            expect(urlUI).toEqual(SettingsProfilePage.urlConstructor(newId, "links"));
         })
 
         it("Go to Shipping Tab", () => {
@@ -127,9 +125,8 @@ describe('URL Settings', () => {
             urlUI = browser.getUrl();
         })
 
-        it('Verify the url for the Shipping Settings page (New)', async () => {
-            let id = (await userLogin(SettingsProfilePage.credentials[1].username, SettingsProfilePage.credentials[1].password)).user._id;
-            expect(urlUI).toEqual(SettingsProfilePage.urlConstructor(id, "delivery"));
+        it('Verify the url for the Shipping Settings page (New)', () => {
+            expect(urlUI).toEqual(SettingsProfilePage.urlConstructor(newId, "delivery"));
         })
     })
 

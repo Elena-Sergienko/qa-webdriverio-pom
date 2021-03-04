@@ -19,7 +19,6 @@ describe('TS: LOGIN', () => {
 
     beforeEach(() => {
         LoginPage.openLoginPage();
-        browser.maximizeWindow();
     })
 
 

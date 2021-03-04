@@ -10,7 +10,6 @@ describe('Diary', () => {
     const report = "Day report 2. Day report 2. Day report 2";
 
     before(() => {
-        browser.maximizeWindow();
         LoginPage.login(SettingsProfilePage.credentials[0].username, SettingsProfilePage.credentials[0].password);
     })
 

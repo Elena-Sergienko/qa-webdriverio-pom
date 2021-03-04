@@ -7,6 +7,10 @@ class ProfilePage extends Page {
         return $("//h1");
     }
 
+    get role(){
+        return $("//span[@class='ant-badge ant-badge-not-a-wrapper']/sup")
+    }
+
     get iconGDResume() {
         return $("//a[@data-qa='resumeIcon']");
     }

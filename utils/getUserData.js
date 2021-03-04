@@ -1,9 +1,6 @@
 import userLogin from "../api/userLogin";
 
-
-const getUserId = async (email, password) => {
+export async function getUserId(email, password) {
     let userId = (await userLogin(email, password)).user._id;
     return userId;
 }
-
-module.exports = getUserId;

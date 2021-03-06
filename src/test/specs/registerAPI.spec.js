@@ -1,8 +1,8 @@
 import RegisterStep1Page from "../pageobjects/register/registerStep1.page";
 import LoginPage from "../pageobjects/login.page";
 import faker from 'faker';
-import userSearchByEmail from "../../api/userSearchByEmail";
-import userDeleteByEmail from "../../api/userDeleteByEmail";
+import userSearchByEmail from "../../utils/api/userSearchByEmail";
+import userDeleteByEmail from "../../utils/api/userDeleteByEmail";
 
 
 describe('USER REGISTRATION', () => {

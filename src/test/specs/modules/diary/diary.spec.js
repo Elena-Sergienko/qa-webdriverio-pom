@@ -7,7 +7,7 @@ import ProfilePage from "../../../pageobjects/profile.page";
 
 describe('Diary', () => {
 
-    const report = "Day report 2. Day report 2. Day report 2";
+    const report = "Day report 2. Day report 2. Day report 54";
 
     before(() => {
         LoginPage.login(SettingsProfilePage.credentials[0].username, SettingsProfilePage.credentials[0].password);
@@ -48,16 +48,18 @@ describe('Diary', () => {
         MenuPage.menuDiary.click();
         // DiaryPage.inputFieldSelectStudentName.setValue(userName); // не работает поиск по имени
         DiaryPage.inputFieldKeyword.setValue(report) // поэтому ищу по полю поиска по ключевым словам
-        DiaryPage.verticalMenu.moveTo();
+        DiaryPage.verticalMenu.moveTo();   // не работает
+
+        DiaryPage.editDayReport.waitForDisplayed();
         DiaryPage.editDayReport.click();
         expect(DiaryPage.titleDrawer).toHaveText("Edit Diary");
 
         DiaryPage.marks.iNeedHelp.click();
-        DiaryPage.marks["iUnderstood"].click();
-        DiaryPage.marks["watchedLectures"].click();
-        DiaryPage.marks["helpedClassmates"].click();
-        DiaryPage.marks["readDocumentation"].click();
-        DiaryPage.marks["codePractice"].click();
+        DiaryPage.marks.iUnderstood.click();
+        DiaryPage.marks.watchedLectures.click();
+        DiaryPage.marks.helpedClassmates.click();
+        DiaryPage.marks.readDocumentation.click();
+        DiaryPage.marks.codePractice.click();
 
         DiaryPage.marks.quizPractice.click();
         DiaryPage.marks.interviewPreparation.click();
@@ -93,7 +95,15 @@ describe('Diary', () => {
         browser.refresh();
         MenuPage.menuDiary.click();
         DiaryPage.inputFieldKeyword.setValue("Edited report: " + report)
-        DiaryPage.verticalMenu.moveTo();
+        // DiaryPage.inputFieldKeyword.setValue(report)
+
+
+        let location = DiaryPage.verticalMenu.getLocation()
+
+        DiaryPage.verticalMenu.moveTo(location); // не работает
+
+        DiaryPage.deleteDayReport.waitForDisplayed();
+
         DiaryPage.deleteDayReport.click();
         DiaryPage.modalConfirmDelete.waitForDisplayed();
         expect(DiaryPage.modalConfirmDelete).toHaveText("Do you want to delete diary?");

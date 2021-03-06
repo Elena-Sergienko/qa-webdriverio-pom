@@ -84,6 +84,10 @@ class DiaryPage extends Page {
 
     get verticalMenu() {
         return $("//img[@class='ant-dropdown-trigger']");
+        // return $("//div[@class='col-md-1']/img");
+        // return $("//img[@src='/static/vertical-menu.948670c0.svg']");
+        // return $("//div[@class='ant-dropdown ant-dropdown-placement-bottomLeft  ant-dropdown-hidden']");
+        // return $("//img[@height='17']");
     }
 
     get approveDayReport() {

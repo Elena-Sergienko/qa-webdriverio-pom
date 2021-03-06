@@ -1,19 +1,20 @@
 module.exports = {
     specs: [
-        // './test/specs/settings/settingsProfile.spec.js',
-        // './test/specs/settings/settingsShipping.spec.js',
-        // './test/specs/shop/shop.spec.js',
-        './test/specs/settings/urlSettings.spec.js',
-        // './test/specs/**/*.js'
+        // './src/test/specs/settings/settingsProfile.spec.js',
+        // './src/test/specs/settings/settingsShipping.spec.js',
+        // './src/test/specs/shop/shop.spec.js',
+        // './src/test/specs/settings/urlSettings.spec.js',
+        // './src/test/specs/modules/diary/diary.spec.js',
+        './src/test/specs/**/*.js'
     ],
     exclude: [
-        // './test/specs/settings/settingsProfile.spec.js',
-        // './test/specs/settings/settingsLinks.spec.js',
-        // './test/specs/settings/settingsPassword.spec.js',
-        './test/specs/modules/diary/diary.spec.js',
-        './test/specs/register.spec.js',
-        './test/specs/registerAPI.spec.js',
-        // './test/specs/shop/shop.spec.js'
+        // './src/test/specs/settings/settingsProfile.spec.js',
+        // './src/test/specs/settings/settingsLinks.spec.js',
+        './src/test/specs/settings/settingsPassword.spec.js',
+        './src/test/specs/modules/diary/diary.spec.js',
+        './src/test/specs/register.spec.js',
+        './src/test/specs/registerAPI.spec.js',
+        // './src/test/specs/shop/shop.spec.js'
     ],
     logLevel: 'info',
     bail: 0,

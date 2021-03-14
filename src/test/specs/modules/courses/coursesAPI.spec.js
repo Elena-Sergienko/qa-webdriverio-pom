@@ -22,19 +22,25 @@ describe('Java Script Syntax', () => {
         const allCourses = await getAllCourses();
         countAllCoursesAPI = allCourses.payload.length;
 
-        let responseArrayObjectsOfCourses = Object.values(allCourses.payload) // это массив объектов(курсов) который приходит в ответе
 
-        for(let eachCourse in responseArrayObjectsOfCourses){
-            namesAllCoursesAPI.push(responseArrayObjectsOfCourses[eachCourse].name) // пушим в массив все названия курсов которые есть у студентов (приходят с бэка)
+        let arrayObjectsAllCoursesFromResponse = Object.values(allCourses.payload) // это массив объектов(курсов) который приходит в ответе
+
+        for(let eachCourse in arrayObjectsAllCoursesFromResponse){
+            namesAllCoursesAPI.push(arrayObjectsAllCoursesFromResponse[eachCourse].name) // пушим в массив все названия курсов которые есть у студентов (приходят с бэка)
         }
 
-        console.log("-------------------------------------------------------------------")
+        console.log("*******************************************************************")
         console.log(countAllCoursesAPI)
         console.log(namesAllCoursesAPI)
         console.log("-------------------------------------------------------------------")
+        console.log(Object.entries(allCourses.payload[0])) // похоже что entries выводит и ключи и значения объекта
+        console.log("-------------------------------------------------------------------")
+        console.log(Object.values(allCourses.payload[0])) // values выводит только значения объекта (без их ключей)
+        console.log("*******************************************************************")
     })
 
 // далее создать такой же массив названий курсов, только с UI и затем прописать функцию, которая сравнит оба массива на наличие всех курсов (на идентичность)
+// подумать - может токен студента нужно чтобы получить именно его курсы, а не все курсы как получает админ по своему токену
 
     // it('Get All courses UI', () => {
     //

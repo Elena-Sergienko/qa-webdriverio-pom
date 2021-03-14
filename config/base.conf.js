@@ -5,15 +5,16 @@ module.exports = {
         // './src/test/specs/shop/shop.spec.js',
         // './src/test/specs/settings/urlSettings.spec.js',
         // './src/test/specs/modules/diary/diary.spec.js',
-        './src/test/specs/**/*.js'
+        './src/test/specs/modules/courses/coursesAPI.spec.js',
+        // './src/test/specs/**/*.js'
     ],
     exclude: [
         // './src/test/specs/settings/settingsProfile.spec.js',
         // './src/test/specs/settings/settingsLinks.spec.js',
-        './src/test/specs/settings/settingsPassword.spec.js',
-        './src/test/specs/modules/diary/diary.spec.js',
-        './src/test/specs/register.spec.js',
-        './src/test/specs/registerAPI.spec.js',
+        // './src/test/specs/settings/settingsPassword.spec.js',
+        // './src/test/specs/modules/diary/diary.spec.js',
+        // './src/test/specs/register.spec.js',
+        // './src/test/specs/registerAPI.spec.js',
         // './src/test/specs/shop/shop.spec.js'
     ],
     logLevel: 'info',

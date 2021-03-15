@@ -6,6 +6,11 @@ class CoursesPage extends Page {
         return $('h1');
     }
 
+    get listCourses() {
+        return $$('h5');
+        // return $$('h4');
+    }
+
     get javaScriptSyntax() {
         return $("//a[@href='/course/5c140b2b42f6ea23059cbe8f']");
     }

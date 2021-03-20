@@ -2,8 +2,8 @@ import LoginPage from "../../../pageobjects/login.page";
 import SettingsProfilePage from "../../../pageobjects/settings/settingsProfile.page"
 import MenuPage from "../../../pageobjects/menu.page"
 import CoursesPage from "../../../pageobjects/modules/courses/courses.page"
-import getAllCourses from "../../../../utils/api/getAllCourses";
-import { getUserToken } from "../../../../utils/getUserData";
+import getAllCourses from "../../../../utils/apiAxios/api/getAllCourses";
+import { getUserToken } from "../../../../utils/apiAxios/getUserData";
 
 
 describe('Java Script Syntax', () => {

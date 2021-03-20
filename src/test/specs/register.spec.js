@@ -6,8 +6,8 @@ import MenuPage from "../pageobjects/menu.page";
 import AdminUsersPage from "../pageobjects/admin/adminUsers.page";
 import SettingsProfilePage from "../pageobjects/settings/settingsProfile.page";
 import DeleteUserPage from "../pageobjects/admin/deleteUser.page";
-import userSearchByEmail from "../../utils/api/userSearchByEmail";
-import userDeleteByEmail from "../../utils/api/userDeleteByEmail";
+import userSearchByEmail from "../../utils/apiAxios/api/userSearchByEmail";
+import userDeleteByEmail from "../../utils/apiAxios/api/userDeleteByEmail";
 const axios = require('axios');
 
 

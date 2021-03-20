@@ -5,7 +5,7 @@ import SettingsPasswordPage from "../../pageobjects/settings/settingsPassword.pa
 import SettingsLinksPage from "../../pageobjects/settings/settingsLinks.page"
 import SettingsShippingPage from "../../pageobjects/settings/settingsShipping.page"
 import MenuPage from "../../pageobjects/menu.page";
-import { getUserId } from "../../../utils/getUserData";
+import { getUserId } from "../../../utils/apiAxios/getUserData";
 
 
 describe('URL Settings', () => {

@@ -1,5 +1,5 @@
 import Page from '../page';
-import {userLogin} from "../../../utils/api/userLogin";
+import {userLogin} from "../../../utils/apiAxios/api/userLogin";
 
 class SettingsProfilePage extends Page {
 

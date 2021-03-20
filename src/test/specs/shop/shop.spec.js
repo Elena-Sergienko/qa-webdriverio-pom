@@ -4,8 +4,8 @@ import SettingsProfilePage from "../../pageobjects/settings/settingsProfile.page
 import SettingsShippingPage from "../../pageobjects/settings/settingsShipping.page"
 import MenuPage from "../../pageobjects/menu.page";
 import faker from 'faker';
-import userRegister from "../../../utils/api/userRegister";
-import userLogin from "../../../utils/api/userLogin";
+import userRegister from "../../../utils/apiAxios/api/userRegister";
+import userLogin from "../../../utils/apiAxios/api/userLogin";
 
 
 

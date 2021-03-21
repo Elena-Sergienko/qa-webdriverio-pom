@@ -122,6 +122,8 @@ class MenuPage extends Page {
         this.profileDropdown.click();
         this.logout.click();
     }
+    // browser.execute('window.localStorage.clear()'); // если нужно разлогиниться между it - чтобы не кликать (не использовать метод goToLogout) - очищаем localStorage браузера (в котором токен и userID)
+
 
 }
 

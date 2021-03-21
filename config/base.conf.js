@@ -6,7 +6,8 @@ module.exports = {
         // './src/test/specs/settings/urlSettings.spec.js',
         // './src/test/specs/modules/diary/diary.spec.js',
         // './src/test/specs/modules/courses/coursesAPI.spec.js',
-        './src/test/specs/modules/groups/groupsApiUi.spec.js',
+        // './src/test/specs/modules/groups/groupsApiUi.spec.js',
+        './src/test/specs/modules/courses/jss_1_1.spec.js',
         // './src/test/specs/**/*.js'
     ],
     exclude: [

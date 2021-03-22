@@ -22,6 +22,18 @@ class ContentsJSSPage extends Page {
         return $("//span[.='Играем в \"песочнице\"']");
     }
 
+    get iframeId() {
+        return $('iframe[id="widget2"]');
+    }
+
+    get buttonPlay() {
+        return $('.ytp-large-play-button.ytp-button');
+    }
+
+    get linkPlayCourseOnYouTube() {
+        return $('a[class=\'ytp-title-link yt-uix-sessionlink\']');
+    }
+
 }
 
 export default new ContentsJSSPage();

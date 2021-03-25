@@ -56,22 +56,41 @@ describe('Java Script Syntax', () => {
         ContentsJSSPage.section_1_1.click();
 
 
+        // const mainIframe = $('iframe[title=\'YouTube video player\']');
+        // const mainIframe = $('//iframe');
+        const mainIframe = $('#widget2');
+        expect(mainIframe).toExist();
+        // browser.switchToFrame(null);
+
+        expect(ContentsJSSPage.linkPlayCourseOnYouTube).toBeClickable()
+        ContentsJSSPage.linkPlayCourseOnYouTube.click()
+        browser.switchToParentFrame();
+
+
+        // let frame = browser.$('#widget2'); // id меняется
+        // browser.pause(5000);
+        // browser.switchToFrame(frame)
+        // browser.setTimeout({'implicit': 10000})
+        // let clickPlay = ContentsJSSPage.linkPlayCourseOnYouTube
+        //     clickPlay.click();
+        // browser.switchToParentFrame();
+        //
+
+
+        //
+        // browser.switchToFrame(ContentsJSSPage.iframeId);
+        // browser.switchToParentFrame()
+        // browser.switchToFrame($('iframe[id="widget2"]'));
+        // browser.switchToFrame($('iframe'));
+        // browser.pause(10000);
+        // ContentsJSSPage.buttonPlay.click();
+        // ContentsJSSPage.linkPlayCourseOnYouTube.click()
+        // browser.pause(4000)
+
 
         // driver.switchTo().defaultContent();
         // WebElement frameXpath = driver.findElement(By.xpath("//iframe[@title='frame report']"));
         // driver.switchTo().frame(frameXpath);
-
-
-        // browser.switchToFrame(ContentsJSSPage.iframeId);
-        // browser.switchToParentFrame()
-        // browser.switchToFrame($('iframe[id="widget2"]'));
-        browser.switchToFrame($('iframe'));
-        browser.pause(10000);
-        // ContentsJSSPage.buttonPlay.click();
-        ContentsJSSPage.linkPlayCourseOnYouTube.click()
-        browser.pause(4000)
-
-
 
     })
 

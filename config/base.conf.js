@@ -3,7 +3,7 @@ module.exports = {
         // './src/test/specs/settings/settingsProfile.spec.js',
         // './src/test/specs/settings/settingsShipping.spec.js',
         // './src/test/specs/shop/shop.spec.js',
-        // './src/test/specs/settings/urlSettings.spec.js',
+        './src/test/specs/settings/urlSettings.spec.js',
         // './src/test/specs/modules/diary/diary.spec.js',
         // './src/test/specs/modules/courses/coursesAPI.spec.js',
         './src/test/specs/modules/groups/groupsApiUi.spec.js',

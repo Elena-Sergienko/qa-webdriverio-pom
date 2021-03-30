@@ -15,7 +15,7 @@ module.exports = {
             .catch((err) => err.response.data);
         process.env.ADMIN_TOKEN = user.token;
 
-        browser.maximizeWindow();
+        // browser.maximizeWindow();
     },
 
     afterTest: function (test, context, {error, result, duration, passed, retries}) {
